@@ -3,7 +3,13 @@ const Client = require('../../models/client')
 
 
 const signupHandler = async (request, h) => {
-    const client = new Client(request.payload)
-    return await service.newClient(client)
+    try{
+        const client = new Client(request.payload)
+        const result = await service.newClient(client)
+        return result
+
+    }catch(err){
+        return err.message
+    }
 }
 module.exports = signupHandler

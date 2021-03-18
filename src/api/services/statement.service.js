@@ -23,7 +23,7 @@ const generateStatement = async ({acc, initDate, endDate}) => {
             return (
                 new StatementRegister(
                     checkingAccountEntryType, 
-                    checkingAccountEntryDate,
+                    checkingAccountEntryDate.toUTCString(),
                     checkingAccountEntryValue,
                     "entry",
                     checkingAccountEntryDescription
@@ -58,7 +58,7 @@ const generateStatement = async ({acc, initDate, endDate}) => {
             return(date2 - date1)
         })
         
-        console.log(result)
+
         return result
 
     }catch(err){

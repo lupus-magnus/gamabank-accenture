@@ -1,14 +1,13 @@
 const database = require('../../helpers/database.util.js')
+const dateToUtc = require('../../helpers/dateToUtc.js')
 
 //ENTRADAS DAS DUAS FUNÇÕES: {acc, initDate, endDate}
 
 //SAÍDA DO getEntries: checkingAccountEntryDate, checkingAccountEntryType, checkingAccountEntryValue, checkingAccountEntryDescription
 
 //SAÍDA DO getCheckouts: checkingAccountCheckoutDate, checkingAccountCheckoutType, checkingAccountCheckoutValue, checkingAccountCheckoutDescription
-const convertDate = date => new Date(date * 1000).toISOString().slice(0,19).replace('T',' ')
 
 const getCheckouts = async (getCheckoutsParam) => {
-    
     //console.log(new Date(getCheckoutsParam.initDate * 1000).toISOString().slice(0,19).replace('T',' '))
     const sqlStatement = `
     SELECT accOut.checkingAccountCheckoutDate, accOut.checkingAccountCheckoutType, accOut.checkingAccountCheckoutValue, accOut.checkingAccountCheckoutDescription   
@@ -16,7 +15,7 @@ const getCheckouts = async (getCheckoutsParam) => {
     INNER JOIN checkingaccountcheckout AS accOut 
     ON acc.checkingAccountNumber = accOut.checkingAccountNumber
     WHERE acc.checkingAccountNumber = ${getCheckoutsParam.acc} 
-    AND accOut.checkingAccountCheckoutDate BETWEEN '${convertDate(getCheckoutsParam.initDate)}' AND '${convertDate(getCheckoutsParam.endDate)}';
+    AND accOut.checkingAccountCheckoutDate BETWEEN '${dateToUtc(getCheckoutsParam.initDate)}' AND '${dateToUtc(getCheckoutsParam.endDate)}';
     `
 
     try{
@@ -33,8 +32,8 @@ const getEntries = async (getEntriesParam) => {
     FROM checkingaccount AS acc
     INNER JOIN checkingaccountentry AS accIn 
     ON acc.checkingAccountNumber = accIn.checkingAccountNumber
-    WHERE acc.checkingAccountNumber = ${getEntriesParam.acc} 
-    AND accIn.checkingAccountEntryDate BETWEEN '${convertDate(getEntriesParam.initDate)}' AND '${convertDate(getEntriesParam.initDate)}';
+    WHERE acc.checkingAccountNumber = ${getEntriesParam.acc}
+    AND accIn.checkingAccountEntryDate BETWEEN '${dateToUtc(getEntriesParam.initDate)}' AND '${dateToUtc(getEntriesParam.endDate)}';
     `
     try{
         const result = await database.query(sqlStatement)
