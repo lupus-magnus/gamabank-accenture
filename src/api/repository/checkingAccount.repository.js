@@ -36,8 +36,23 @@ const updateBalance = async (accNumber, value) => {
          await database.query(sqlstatement)
          return `Saldo atualizado para ${value}`
     } catch(err){
-        console.log(err)
+        return err
     }
 }
 
-module.exports = { getCurrentAccount, updateBalance, getAccountById }
+const createAccount = async (clientId) => {
+    const sqlstatement = `INSERT INTO checkingaccount (clientCod, checkingAccountBalance, checkingAccountStatus) VALUES (${clientId}, 0.00, "Active")`
+    try {
+         const result = await database.query(sqlstatement)
+         return result
+    } catch(err){
+        return err
+    }
+
+    
+}
+
+
+
+
+module.exports = { getCurrentAccount, updateBalance, getAccountById, createAccount }

@@ -1,6 +1,10 @@
 const clientRepository = require('../repository/client.repository')
 const mycripto = require('../../helpers/mycripto')
 const validate = require('../../helpers/validate')
+const createCreditCard = require('./createCreditCard.service')
+const { insertCard } = require('../repository/clientCard.repository')
+const {createAccount} = require('../repository/checkingAccount.repository')
+
 
 const newClient = async (client)=>{
     if(
@@ -8,15 +12,27 @@ const newClient = async (client)=>{
         !new validate.ValidaCPF(client.clientCPF).valida() ||
         !validate.emailValidator(client.clientEmail)
     
-    ) return `Dados invalidos`
+    ) throw new Error(`Dados invalidos`)
 
-    const {encryptedPassword, salt} = await mycripto.encryptPassword(client.clientPassword);
+    try{
+        const {encryptedPassword, salt} = await mycripto.encryptPassword(client.clientPassword);
+    
+        client.clientPassword = encryptedPassword
+        client.clientSalt = salt
+    
+    
+        const clientId =  await clientRepository.newClient(client) 
+        const {insertId:checkingAccountNumber} = await createAccount(clientId)
+        const card = await createCreditCard(client.clientName)
+        const newCard = await insertCard(clientId, checkingAccountNumber, card)
+    
+            //envio de e-mail
+        return 'O cadastro foi realizado com sucesso. Verifique os dados da sua conta no seu e-mail.'
+    } catch(err){
+        throw err
+    }
 
-    client.clientPassword = encryptedPassword
-    client.clientSalt = salt
-
-
-    return await clientRepository.newClient(client) 
+    
 }
 
 // const returnClient = async (userName)=>{
