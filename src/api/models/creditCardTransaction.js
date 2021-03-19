@@ -5,7 +5,8 @@ class CreditCardTransaction {
         this.clientCod= clientCod, 
         this.cardEntrieValue = cardEntrieValue, 
         this.installmentNumber = installmentNumber,
-        this.installment = cardEntrieCreditInstallment
+        this.installments = cardEntrieCreditInstallment,
+        this.creditPostingDate = new Date()*1
     }
 }
 

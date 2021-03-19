@@ -78,11 +78,8 @@ CREATE TABLE `clientcard` (
   `clientCardCreatedDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
   PRIMARY KEY (`clientCardNumber`,`clientCod`,`checkingAccountNumber`),
   KEY `clientCod` (`clientCod`),
-  KEY `checkingAccountNumber` (`checkingAccountNumber`),
   -- CONSTRAINT `clientcard_ibfk_1` 
-  FOREIGN KEY (`clientCod`) REFERENCES `client` (`clientCod`),
-  -- CONSTRAINT `clientcard_ibfk_2` 
-  FOREIGN KEY (`checkingAccountNumber`) REFERENCES `checkingaccount` (`checkingAccountNumber`)
+  FOREIGN KEY (`clientCod`) REFERENCES `client` (`clientCod`)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 /*Table structure for table `creditcardentrieinstallment` */
@@ -94,7 +91,7 @@ CREATE TABLE `creditcardentrieinstallment` (
   `creditCardEntrieInstallmentNumber` INT(11) NOT NULL,
   `creditCardEntrieInstallmentValue` DECIMAL(10,2) NOT NULL,
   `creditCardEntrieInstallmentDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-  PRIMARY KEY (`creditCardEntrieCod`)
+  PRIMARY KEY (`creditCardEntrieCod`,`creditCardEntrieInstallmentNumber`)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 
@@ -104,20 +101,17 @@ CREATE TABLE `creditcardentrieinstallment` (
 DROP TABLE IF EXISTS `cardentrie`;
 
 CREATE TABLE `cardentrie` (
-  `cardEntrieCod` INT(11) NOT NULL,
+  `cardEntrieCod` INT(11) NOT NULL AUTO_INCREMENT,
   `clientCardNumber` VARCHAR(16) NOT NULL,
   `clientCod` INT(11) NOT NULL,
-  `checkingAccountNumber` INT(11) NOT NULL,
-  `cardEntrieType` VARCHAR(1) NOT NULL,
+  `cardEntrieType` ENUM('credit','debit') NOT NULL,
   `cardEntrieDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
   `cardEntrieValue` DECIMAL(15,2) NOT NULL,
   `cardEntrieCreditInstallment` INT(11) NOT NULL,
   PRIMARY KEY (`cardEntrieCod`,`clientCardNumber`),
   KEY `clientCod` (`clientCod`),
-  KEY `checkingAccountNumber` (`checkingAccountNumber`),
   KEY `clientCardNumber` (`clientCardNumber`),
   CONSTRAINT `cardentrie_ibfk_1` FOREIGN KEY (`clientCod`) REFERENCES `client` (`clientCod`),
-  CONSTRAINT `cardentrie_ibfk_2` FOREIGN KEY (`checkingAccountNumber`) REFERENCES `checkingaccount` (`checkingAccountNumber`),
   CONSTRAINT `cardentrie_ibfk_3` FOREIGN KEY (`clientCardNumber`) REFERENCES `clientcard` (`clientCardNumber`)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 

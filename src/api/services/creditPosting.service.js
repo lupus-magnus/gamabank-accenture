@@ -1,31 +1,32 @@
-const CreditCardTransaction = require('../models/creditCardTransaction')
-const getUserCardData = require('../repository/clientCard.repository')
+const {getUserCardData} = require('../repository/clientCard.repository')
+const generateInstallment = require('./installment.service')
+const creditPostingRepository = require('../repository/creditPosting.repository')
 // falta o clientCod
 const creditTransaction = async (creditCardTransaction) => {
-    const cardData =  await getUserCardData(creditCardTransaction.cardNumber)
-    if(creditCardTransaction.cardEntrieValue <= 0 ||
-        typeof creditCardTransaction.cardEntrieValue !== "number" ){
-        throw new Error ("Valor inválido!")
-    }
-
-    if(cardData.clientCreditCardLimit < creditCardTransaction.cardEntrieValue){
-        throw new Error("Eita! Limite insuficiente")
-    }
+    try{
+        const {cardEntrieValue,installmentNumber,clientCard,creditPostingDate} = creditCardTransaction
+        const cardData = await getUserCardData(clientCard)
+        if (cardEntrieValue <= 0 ||
+            typeof cardEntrieValue !== "number") {
+            throw new Error("Valor inválido!")
+        }
     
-    creditCardTransaction.clientCod = cardData.clientCod
-    creditCardTransaction.installmentNumber
-
-    const generateInstallment = async (numerodeparcelas, valorTotal) => {
-        const installments = []
-        const installmentValue = Math.round((valorTotal / numerodeparcelas), -2)
-        return installmentValue
+        if (cardData.clientCreditCardLimit < cardEntrieValue) {
+            throw new Error("Eita! Limite insuficiente")
+        }
+    
+        creditCardTransaction.clientCod = cardData.clientCod
+    
+        creditCardTransaction.installments = generateInstallment(installmentNumber,cardEntrieValue,creditPostingDate)
+        const msg = await creditPostingRepository.newCreditPosting(creditCardTransaction)
+        
+        return msg
+    }catch(err) {
+        throw err
     }
-
-
 }
 
 
 
-console.log( generateInstallment(3, 300))
 module.exports = creditTransaction
 

@@ -21,7 +21,6 @@ const getUserCardData = async (cardNumber) => {
             }
             resolve(result[0])
         } catch(err){
-            console.error(err)
             reject(err)
         }
     })

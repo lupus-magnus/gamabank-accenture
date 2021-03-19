@@ -1,5 +1,5 @@
 const {newDeposit} = require('../../src/api/services/deposit.service')
-var chai = require('chai');
+var chai = require('chai')
 const {assert, expect} = require('chai')
 
 describe('Valida os casos de erro de valor dentro da função',()=>{

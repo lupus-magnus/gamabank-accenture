@@ -1,30 +1,79 @@
 const mysql = require('mysql')
-const databaseConfigs  = require('../configs/env').database
-const {executeDB} = require('../../helpers/database.util')
+const databaseConfigs  = require('../../configs/env').database
 
 
 // o que vamos receber: creditcard, cardEntrieValue, cardEntrieCreditInstallment
 // obj = numero de parcelas, valor de cada parcela
-const newCreditPosting = (creditCardTransaction) => {
-    const {clientcard, clientCod, cardEntrieValue, cardEntrieCreditInstallment} = creditCardTransaction 
-
-    const connection = mysql.createConnection(databaseConfigs)
-    const sqlStatement = `INSERT INTO cardentrie (cardEntrieCod, cliendCod, cardEntrieType, cardEntrieValue, cardEntrieCreditInstallment) VALUES(${clientcard}, ${clientCod}, "crédito", ${cardEntrieValue}, ${cardEntrieCreditInstallment})`
 //cardInstallment é um array
-    const {installment} = creditCardTransaction 
-    for(key in installment){
-        const sqlInstallment = `INSERT INTO creditcardentrieinstallment (creditCardEntrieInstallmentNumber, creditCardEntrieInstallmentValue) VALUES(${key}, ${installment[key]})`
-        try{
-            await executeDB(sqlInstallment)
-        }catch(err){
-            throw err
-        }      
-    }    
-    try{
-        await executeDB(sqlStatement)
-    }catch(err){
-        throw err
-    }
+
+let connection
+const openConnection = async () => {
+    connection = await mysql.createConnection(databaseConfigs)
+}
+
+const executeInTransaction = async (sqlstatement) => {
+    return new Promise(async (resolve, reject) => {
+        await connection.query(sqlstatement, (err, result) => {
+            if (err) reject(err)
+            resolve(result)
+
+        })
+    })
+}
+
+
+
+
+const newCreditPosting = async (creditCardTransaction) => {
+    return new Promise(async(resolve, reject) => {
+        await openConnection()
+        connection.beginTransaction(async err =>{
+            if(err) throw new Error("sintaxe inválida")
+            try{
+                const {clientCard, clientCod, cardEntrieValue, installmentNumber} = creditCardTransaction
+                
+                const newCardentrieSQL = `INSERT INTO cardentrie (clientCardNumber, clientCod, cardEntrieType, cardEntrieValue, cardEntrieCreditInstallment) VALUES("${clientCard}", ${clientCod}, "credit", ${cardEntrieValue}, ${installmentNumber})`
+                let insertId
+                try{
+                   const result = await executeInTransaction(newCardentrieSQL)
+                   insertId = result.insertId
+                }catch(err) {
+                    throw err
+                }
+    
+                const {installments} = creditCardTransaction 
+                    for(installment of installments){
+                        const installmentSQL = `INSERT INTO creditcardentrieinstallment (creditCardEntrieCod,creditCardEntrieInstallmentNumber, creditCardEntrieInstallmentValue,creditCardEntrieInstallmentDate) VALUES(${insertId},${installment.number}, ${installment.value}, "${installment.date}")`
+                
+                       try{
+                          await executeInTransaction(installmentSQL)
+                        }catch(err) {
+                           throw err
+                        }
+                              
+                    }
+
+              
+
+                connection.commit(err =>{
+                    if(err) {
+                        return connection.rollback(_=>{
+                            throw new Error("Falha no Pagamento")
+                        })
+                    }
+                    connection.end()
+                })
+                resolve('Pagamento Aprovado')
+            }catch(err) {
+                connection.rollback(_=>{
+                    reject(new Error("Pagamento Recusado"))
+                })
+            }
+
+
+        })
+
+    })
 } 
 
 

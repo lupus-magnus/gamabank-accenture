@@ -1,7 +1,7 @@
 const {validateCheckout} = require('../../src/api/services/validateCheckout.service')
-var chai = require('chai');
+var chai = require('chai')
 const {assert, expect} = require('chai')
-const chaiAsPromised = require("chai-as-promised");
+const chaiAsPromised = require("chai-as-promised")
 chai.use(chaiAsPromised);
 
 describe('Valida se os valores estão sendo corretamente validados: ',()=>{

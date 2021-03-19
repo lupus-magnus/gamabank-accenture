@@ -1,10 +1,11 @@
 const mysql = require('mysql')
 const databaseConfigs  = require('../configs/env').database
 
+
 const query = async (sqlstatement) =>{
     const connection = await mysql.createConnection(databaseConfigs)
     return new Promise(async (resolve, reject) =>{
-       
+        
         connection.query(sqlstatement,(err, result) =>{
             if(err) reject(err)
             resolve(result)
@@ -24,7 +25,7 @@ const registerExists = async (tableName, tableColumn, value) => {
                 resolve(true)
             }
             resolve(false)
-
+            
         }catch(err) {
             console.error(err)
             reject(err)
@@ -32,17 +33,23 @@ const registerExists = async (tableName, tableColumn, value) => {
     })
 }
 
+
+
 const executeDB = (sqlStatement) => {
+    console.log("Entrei no util")
+    console.log("Minhas ordens",sqlStatement,'\n')
     return new Promise(async (resolve, reject) =>{
-       
-        connection.query(sqlstatement,(err, result) =>{
+        transactionConnection.query(sqlStatement,(err, result) =>{
             if(err) reject(err)
+            console.log("Meus resultados",result,'\n')
             resolve(result)
-            connection.end()
+            
             
         })
     })
 }
+
+
 
 module.exports = { query, registerExists, executeDB}
 
