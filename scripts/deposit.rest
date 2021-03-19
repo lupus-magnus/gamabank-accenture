@@ -2,7 +2,7 @@ POST http://localhost:3001/user/deposit HTTP/1.1
 Content-Type: application/json
 
 {
-     "account": 2,
-     "userCPF": "12345678909", 
-     "value": 10000 
+     "account": 1,
+     "userCPF": "30317966081", 
+     "value": 30000 
 }

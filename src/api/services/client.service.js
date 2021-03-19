@@ -27,7 +27,7 @@ const newClient = async (client)=>{
         const newCard = await insertCard(clientId, checkingAccountNumber, card)
     
             //envio de e-mail
-        return 'O cadastro foi realizado com sucesso. Verifique os dados da sua conta no seu e-mail.'
+        return ({message: 'O cadastro foi realizado com sucesso. Verifique os dados da sua conta no seu e-mail.', ...card})
     } catch(err){
         throw err
     }
