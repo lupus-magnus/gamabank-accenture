@@ -108,6 +108,7 @@ CREATE TABLE `cardentrie` (
   `cardEntrieDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
   `cardEntrieValue` DECIMAL(15,2) NOT NULL,
   `cardEntrieCreditInstallment` INT(11) NOT NULL,
+  `cardEntrieCreditDescription` VARCHAR(120) NOT NULL,
   PRIMARY KEY (`cardEntrieCod`,`clientCardNumber`),
   KEY `clientCod` (`clientCod`),
   KEY `clientCardNumber` (`clientCardNumber`),

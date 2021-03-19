@@ -30,9 +30,9 @@ const newCreditPosting = async (creditCardTransaction) => {
         connection.beginTransaction(async err =>{
             if(err) throw new Error("sintaxe inválida")
             try{
-                const {clientCard, clientCod, cardEntrieValue, installmentNumber} = creditCardTransaction
+                const {clientCard, clientCod, cardEntrieValue, installmentNumber, description} = creditCardTransaction
                 
-                const newCardentrieSQL = `INSERT INTO cardentrie (clientCardNumber, clientCod, cardEntrieType, cardEntrieValue, cardEntrieCreditInstallment) VALUES("${clientCard}", ${clientCod}, "credit", ${cardEntrieValue}, ${installmentNumber})`
+                const newCardentrieSQL = `INSERT INTO cardentrie (clientCardNumber, clientCod, cardEntrieType, cardEntrieValue, cardEntrieCreditInstallment, cardEntrieCreditDescription) VALUES("${clientCard}", ${clientCod}, "credit", ${cardEntrieValue}, ${installmentNumber}, "${description}")`
                 let insertId
                 try{
                    const result = await executeInTransaction(newCardentrieSQL)

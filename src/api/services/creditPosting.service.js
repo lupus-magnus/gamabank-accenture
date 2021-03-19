@@ -1,11 +1,13 @@
 const {getUserCardData} = require('../repository/clientCard.repository')
 const generateInstallment = require('./installment.service')
 const creditPostingRepository = require('../repository/creditPosting.repository')
+const validateCardData = require('./validateClientCard.service')
 // falta o clientCod
-const creditTransaction = async (creditCardTransaction) => {
+const creditTransaction = async (creditCardTransaction, creditCard) => {
     try{
         const {cardEntrieValue,installmentNumber,clientCard,creditPostingDate} = creditCardTransaction
         const cardData = await getUserCardData(clientCard)
+        await validateCardData(creditCard, cardData)
         if (cardEntrieValue <= 0 ||
             typeof cardEntrieValue !== "number") {
             throw new Error("Valor inválido!")
