@@ -4,5 +4,10 @@ Content-Type: application/json
 {   
      "cardNumber":"4716944164368876",
      "value": 10,
-     "installments":10
+     "installments": 10,
+     "description": "",
+     "expiration": "",
+     "holder": "",
+     "password": "",
+     "cvv": ""
 }
