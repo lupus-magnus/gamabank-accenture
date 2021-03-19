@@ -32,8 +32,19 @@ const registerExists = async (tableName, tableColumn, value) => {
     })
 }
 
+const executeDB = (sqlStatement) => {
+    return new Promise(async (resolve, reject) =>{
+       
+        connection.query(sqlstatement,(err, result) =>{
+            if(err) reject(err)
+            resolve(result)
+            connection.end()
+            
+        })
+    })
+}
 
-module.exports = { query, registerExists}
+module.exports = { query, registerExists, executeDB}
 
 
 
