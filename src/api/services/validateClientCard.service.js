@@ -9,7 +9,6 @@ const validateCardData = async (creditCard, dataBaseCardData) => {
         if(!mycripto.comparePassword(creditCard.password, dataBaseCardData.clientcardSalt, dataBaseCardData.clientcardPassword)) throw new Error("Senha incorreta.")
 
         //validando cvv
-        
         if(creditCard.cvv !== dataBaseCardData.clientcardCVV) throw new Error("Não foi possível validar o cartão, dados incorretos")
         //validando holder
         if(creditCard.holder !== dataBaseCardData.clientcardHolder) throw new Error("Não foi possível validar o cartão, dados incorretos")
