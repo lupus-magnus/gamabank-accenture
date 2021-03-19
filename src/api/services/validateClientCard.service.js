@@ -5,8 +5,8 @@ const mycripto = require('../../helpers/mycripto')
 
 const validateCardData = async (creditCard, dataBaseCardData) => {
     try{
-        console.table(dataBaseCardData)
-        console.table(creditCard)
+        console.table(dataBaseCardData.salt)
+
         //validando password
         creditCard.password = await mycripto.encryptPassword(creditCard.password, dataBaseCardData.salt)
         if(mycripto.comparePassword(creditCard.password, dataBaseCardData.salt, dataBaseCardData.password)) throw new Error("Senha incorreta.")
