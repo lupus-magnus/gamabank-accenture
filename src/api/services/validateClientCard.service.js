@@ -5,18 +5,16 @@ const mycripto = require('../../helpers/mycripto')
 
 const validateCardData = async (creditCard, dataBaseCardData) => {
     try{
-        console.table(dataBaseCardData.salt)
-
         //validando password
-        creditCard.password = await mycripto.encryptPassword(creditCard.password, dataBaseCardData.salt)
-        if(mycripto.comparePassword(creditCard.password, dataBaseCardData.salt, dataBaseCardData.password)) throw new Error("Senha incorreta.")
+        if(!mycripto.comparePassword(creditCard.password, dataBaseCardData.clientcardSalt, dataBaseCardData.clientcardPassword)) throw new Error("Senha incorreta.")
 
         //validando cvv
-        if(creditCard.cvv !== dataBaseCardData.cvv) throw new Error("Não foi possível validar o cartão, dados incorretos")
+        
+        if(creditCard.cvv !== dataBaseCardData.clientcardCVV) throw new Error("Não foi possível validar o cartão, dados incorretos")
         //validando holder
-        if(creditCard.holder !== dataBaseCardData.holder) throw new Error("Não foi possível validar o cartão, dados incorretos")
+        if(creditCard.holder !== dataBaseCardData.clientcardHolder) throw new Error("Não foi possível validar o cartão, dados incorretos")
         //validando validade
-        if(creditCard.expiration !== dataBaseCardData.expiration) throw new Error("Não foi possível validar o cartão, dados incorretos")
+        if(creditCard.expiration !== dataBaseCardData.clientcardExpirationDate) throw new Error("Não foi possível validar o cartão, dados incorretos")
         const splited = creditCard.expiration.split("/")
         for(let i in splited){
             splited[i] = Number(splited[i])
