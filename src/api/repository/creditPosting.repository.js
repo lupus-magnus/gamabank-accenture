@@ -24,7 +24,7 @@ const executeInTransaction = async (sqlstatement) => {
 
 
 
-const newCreditPosting = async (creditCardTransaction) => {
+const newCreditPosting = async (creditCardTransaction,newLimit) => {
     return new Promise(async(resolve, reject) => {
         await openConnection()
         connection.beginTransaction(async err =>{
@@ -42,18 +42,26 @@ const newCreditPosting = async (creditCardTransaction) => {
                 }
     
                 const {installments} = creditCardTransaction 
-                    for(installment of installments){
-                        const installmentSQL = `INSERT INTO creditcardentrieinstallment (creditCardEntrieCod,creditCardEntrieInstallmentNumber, creditCardEntrieInstallmentValue,creditCardEntrieInstallmentDate) VALUES(${insertId},${installment.number}, ${installment.value}, "${installment.date}")`
+                for(installment of installments){
+                    const installmentSQL = `INSERT INTO creditcardentrieinstallment (creditCardEntrieCod,creditCardEntrieInstallmentNumber, creditCardEntrieInstallmentValue,creditCardEntrieInstallmentDate) VALUES(${insertId},${installment.number}, ${installment.value}, "${installment.date}")`
                 
-                       try{
-                          await executeInTransaction(installmentSQL)
-                        }catch(err) {
-                           throw err
-                        }
-                              
+                    try{
+                        await executeInTransaction(installmentSQL)
+                    }catch(err) {
+                        throw err
                     }
+                              
+                }
 
-              
+                const updateLimitSQL = `UPDATE clientcard SET clientcard.clientCreditCardLimitAvailable = ${newLimit}
+                WHERE clientcard.clientCardNumber = "${clientCard}"`
+                try{
+                    await executeInTransaction(updateLimitSQL)
+                }catch(err) {
+                     throw err
+                }
+
+                
 
                 connection.commit(err =>{
                     if(err) {

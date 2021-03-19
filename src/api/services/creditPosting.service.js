@@ -13,14 +13,17 @@ const creditTransaction = async (creditCardTransaction, creditCard) => {
             throw new Error("Valor inválido!")
         }
     
-        if (cardData.clientCreditCardLimit < cardEntrieValue) {
+        if (cardData.clientCreditCardLimitAvailable < cardEntrieValue) {
             throw new Error("Eita! Limite insuficiente")
         }
-    
+        
+
         creditCardTransaction.clientCod = cardData.clientCod
-    
+        
+        const newLimit = cardData.clientCreditCardLimitAvailable - cardEntrieValue
+
         creditCardTransaction.installments = generateInstallment(installmentNumber,cardEntrieValue,creditPostingDate)
-        const msg = await creditPostingRepository.newCreditPosting(creditCardTransaction)
+        const msg = await creditPostingRepository.newCreditPosting(creditCardTransaction,newLimit)
         
         return msg
     }catch(err) {
