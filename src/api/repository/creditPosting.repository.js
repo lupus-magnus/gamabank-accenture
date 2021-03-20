@@ -24,7 +24,7 @@ const executeInTransaction = async (sqlstatement) => {
 
 
 
-const newCreditPosting = async (creditCardTransaction,newLimit) => {
+const payCreditStatement = async (creditCardTransaction,newLimit) => {
     return new Promise(async(resolve, reject) => {
         await openConnection()
         connection.beginTransaction(async err =>{

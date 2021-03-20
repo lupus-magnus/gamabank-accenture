@@ -1,7 +1,7 @@
 const service = require('../../services/client.service')
 const Client = require('../../models/client')
 const {sendSignupEmail } = require('../../services/email.service')
-//const { should } = require('chai')
+
 
 const signupHandler = async (request, h) => {
     let shouldEmailBeSent = true
