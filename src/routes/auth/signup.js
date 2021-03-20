@@ -8,7 +8,7 @@ const signup = {
     handler: signupHandler,
     options: {
         tags: ['api', 'signup'],
-        description: 'Rota de autenticação',
+        description: 'Rota de signup',
         notes: 'Anotações da rota...',
         validate: {
             payload: SignUpRequestDTO
