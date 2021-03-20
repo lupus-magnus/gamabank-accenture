@@ -1,9 +1,9 @@
 
 const root = {
     method:'GET',
-    path: '/',
+    path: '/documentation',
     handler: (req, h) => {
-       return h.redirect("https://github.com/paulotelles/gamabank-accenture")
+     //  return h.redirect("https://github.com/paulotelles/gamabank-accenture")
     }
 }
 
