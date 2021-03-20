@@ -1,4 +1,4 @@
-const dateToUTC = require('../../helpers/dateToUTC')
+const {dateToUTC} = require('../../helpers/dateToUTC')
 const generateInstallment = (installmentNumber, fullValue, postingDate) => {
     const installments = []
     let installmentDate = new Date(postingDate)

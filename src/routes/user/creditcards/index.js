@@ -1,7 +1,7 @@
 const creditcards = require('./creditcards')
-const creditcardbill = require('./creditcardbill')
+const creditCardStatement = require('./creditCardStatement')
 const billpayment = require('./billpayment')
-const creditcardid = require('./creditcardid')
 
 
-module.exports = [creditcards ,creditcardbill, billpayment, creditcardid]
+
+module.exports = [creditcards , creditCardStatement, billpayment]
