@@ -7,7 +7,7 @@ const generateInstallment = (installmentNumber, fullValue, postingDate) => {
     for (let i = 1; i <= installmentNumber; i++) {
         
         installmentDate = new Date(installmentDate).setMonth(new Date(installmentDate).getMonth() + 1)
-        const formatedDate = dateToUTC(installmentDate/1000)
+        const [formatedDate] = dateToUTC(installmentDate/1000).split(" ")
         if(i === 1) 
             installments.push(
                 { number: i, value: Number((installmentValue+fix).toFixed(2)), date: formatedDate }
@@ -20,5 +20,7 @@ const generateInstallment = (installmentNumber, fullValue, postingDate) => {
     
     return installments
 }
+
+
 
 module.exports = generateInstallment

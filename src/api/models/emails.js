@@ -1,4 +1,5 @@
 //Formato do userInfo : nome, número do cartão, ultima entrada do crédito, essas coisas.
+const { signupHtml, paidInstallmentHtml, paidDebitHtml  } = require("../views/emailView")
 
 class EmailModel {
     constructor( subject, text, html){
@@ -10,15 +11,24 @@ class EmailModel {
 
 //Todos os tipos de email que enviamos estão listados abaixo:
 const signUpEmail = userInfo => {
-    return(new EmailModel("Bem vindo ao HelloBank", `Olá ${userInfo.name}, \n bem vindo ao melhor banco do mundo.`))
+    return(new EmailModel("Bem vindo ao HelloBank", `Olá ${userInfo.clientName}, \n bem vindo ao melhor banco do mundo.
+    \n Sua senha é ${userInfo.password}, o número de seu cartão é ${userInfo.number}`, signupHtml(userInfo)))
 } 
 
 const paidInstallmentEmail = userInfo => {
-    return(new EmailModel("Confirmação de Pagamento", `Caro(a) ${userInfo.name}, \n sua fatura do cartão de número ${userInfo.cardNumber} mais recente acabou de ser paga. `))
+    return(new EmailModel("Confirmação de Pagamento", `Caro(a) ${userInfo.name}, \n sua fatura do cartão de número ${userInfo.cardNumber} mais recente acabou de ser paga. `, paidInstallmentHtml(userInfo)))
 }
 
 const creditCardEntryEmail = userInfo => {
-    return(new EmailModel("Novo lançamento de crédito", `Caro(a) ${userInfo.name}, \n foi cadastrada uma nova compra de ${userInfo.checkingAccountEntryValue} em seu cartão de número ${userInfo.cardNumber}. `))
+    return(new EmailModel("Novo lançamento de crédito", `Caro(a) ${userInfo.name}, \n foi cadastrada uma nova compra de ${userInfo.checkingAccountEntryValue} em seu cartão de número ${userInfo.cardNumber}. `, creditCardEntryHtml(userInfo)))
 }
 
-module.exports = {EmailModel, signUpEmail, paidInstallmentEmail, creditCardEntryEmail }
+const paidDebitEmail = userInfo => {
+    let actualTime = new Date()
+    let dataFormatada = ((actualTime.getDate() )) + "/" + ((actualTime.getMonth() + 1)) + "/" + actualTime.getFullYear() + ` \n ${actualTime.toLocaleTimeString('en-US', { hour12: false })} `
+    userInfo.dataFormatada = dataFormatada
+    return(new EmailModel("Novo lançamento de débito!", `Foi cadastrada uma nova compra de débito em sua conta. \n Valor: R$ ${userInfo.value.toFixed(2)} \n Descrição: ${userInfo.description} \n Horário: ${dataFormatada} `, paidDebitHtml(userInfo)))
+    
+}
+
+module.exports = {EmailModel, signUpEmail, paidInstallmentEmail, creditCardEntryEmail, paidDebitEmail }

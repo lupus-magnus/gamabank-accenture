@@ -75,6 +75,7 @@ CREATE TABLE `clientcard` (
   `clientcardExpirationDate` VARCHAR(5) NOT NULL,
   `clientcardCVV` INT(3) NOT NULL,
   `clientCreditCardLimit` DECIMAL(15,2) NOT NULL DEFAULT 200,
+  `clientCreditCardLimitAvailable` DECIMAL(15,2) NOT NULL DEFAULT 200,
   `clientCardCreatedDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
   PRIMARY KEY (`clientCardNumber`,`clientCod`,`checkingAccountNumber`),
   KEY `clientCod` (`clientCod`),
@@ -90,7 +91,8 @@ CREATE TABLE `creditcardentrieinstallment` (
   `creditCardEntrieCod` INT(11) NOT NULL,
   `creditCardEntrieInstallmentNumber` INT(11) NOT NULL,
   `creditCardEntrieInstallmentValue` DECIMAL(10,2) NOT NULL,
-  `creditCardEntrieInstallmentDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+  `creditCardEntrieInstallmentDate` DATE NOT NULL,
+  `creditCardEntrieInstallmentCreatedAt` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
   PRIMARY KEY (`creditCardEntrieCod`,`creditCardEntrieInstallmentNumber`)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
@@ -108,6 +110,7 @@ CREATE TABLE `cardentrie` (
   `cardEntrieDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
   `cardEntrieValue` DECIMAL(15,2) NOT NULL,
   `cardEntrieCreditInstallment` INT(11) NOT NULL,
+  `cardEntrieCreditDescription` VARCHAR(120) NOT NULL,
   PRIMARY KEY (`cardEntrieCod`,`clientCardNumber`),
   KEY `clientCod` (`clientCod`),
   KEY `clientCardNumber` (`clientCardNumber`),

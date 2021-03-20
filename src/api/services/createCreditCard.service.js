@@ -76,7 +76,7 @@ const createCreditCard = async (clientName) =>{
     const number = await CreditCard.generate('VISA')
     const holder = await generateHolder(clientName)
     const card = new ClientCard(number, holder, expiration, cvv, password, encryptedPassword, salt)
-    console.log(card)
+    console.table(card)
     return card
 }
 

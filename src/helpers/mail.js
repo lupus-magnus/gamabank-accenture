@@ -1,11 +1,21 @@
 const nodemailer = require("nodemailer");
 const configs = require('../configs/env')
 
-const setup = async () => {
 
+const setup = async () => {  
     let account
-    if(configs.env === 'test' || configs.env === 'development')
-        account = await nodemailer.createTestAccount()
+    let accountPromise = new Promise (async (resolve, reject) => {
+        
+        if(configs.env === 'test' || configs.env === 'development'){
+            account = await nodemailer.createTestAccount()
+            //console.log("AQUI TEM O ACCOUNT FAKE ------>",account)
+            resolve(account)
+        }
+        resolve(0)
+    })
+
+    account = await accountPromise
+    console.log("Account fora da promise --->", account)
 
     const transporter = nodemailer.createTransport({
 
@@ -23,9 +33,8 @@ const setup = async () => {
 }
 
 async function sendMailFunction(to, emailModel) {
-
     const transporter = await setup()
-
+// mudar pra model de produção esse info
   let info = await transporter.sendMail({
     from: '"HelloBank😎" <foo@example.com>', // sender address
     to: to, // list of receivers
@@ -34,7 +43,7 @@ async function sendMailFunction(to, emailModel) {
     html: emailModel.html, // html body
   });
   //A linha abaixo só roda se a função for chamada em modo teste ou desenvolvimento.
-  if(account) console.log("\n Preview URL: %s", nodemailer.getTestMessageUrl(info),"\n");
+  if((configs.env === 'test' || configs.env === 'development')) console.log("\n Preview URL: %s", nodemailer.getTestMessageUrl(info),"\n");
 }
 
 module.exports = {sendMailFunction}
