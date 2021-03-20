@@ -3,27 +3,33 @@ const { getUserTokenData } = require('../../services/userTokenData.service')
 const CheckingTransaction = require('../../models/checkingTransaction')
 const {verify} = require('../../services/auth.service')
 const {sendPaidDebitEmail} = require('../../services/email.service')
+const { should } = require('chai')
 
 const paydebitHandler = async (request, h) => {
     const token = request.headers['x-access-token']
     const {data} = await verify(token)
-    const emailTarget = data.username
+    let emailTarget = data.username
+    let shouldEmailBeSent = true
     if (token) {
+        let emailData
         try {
             const { value, description } = request.payload
             const { checkingAccountNumber } = await getUserTokenData(token) // dados out cpf e ContaDestino
             const transferData = new CheckingTransaction({ description, account: checkingAccountNumber, value, bank: 999 })
-            const emailData = {
+            emailData = {
                 email: emailTarget,
                 value,
                 description
             }
             console.log(emailData)
-            await sendPaidDebitEmail(emailData)
+            
             return await newDebitExpenses(transferData) 
 
         } catch (err) {
+            shouldEmailBeSent = false
             return err.message
+        }finally{
+            if (shouldEmailBeSent) await sendPaidDebitEmail(emailData)
         }
     }
 }
