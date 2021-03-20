@@ -10,7 +10,7 @@ const PayCreditDTO = Joi.object({
     holder: Joi.string().required(),
     cvv: Joi.string().required()
 
-}).label('PayDebitDTO')
+}).label('PayCreditDTO')
 
 
 module.exports = { PayCreditDTO }

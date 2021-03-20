@@ -5,10 +5,10 @@ const creditcardbill = {
     method:'GET',
     path: '/user/creditcards/{date}', // ?timeinterval = timestamp
     handler: creditCardStatementHandler,
-    /* options: {
-        tags: ['api', 'credit'],
-        description: 'Rota de pagamento de fatura ',
-        notes: 'Anotações da rota...',
+    options: {
+        tags: ['api', 'credit-statement'],
+        description: 'Rota para pegar a fatura do cartão de crédito ',
+        notes: 'Nessa rota, é importante inserir o token no Header',
         validate: {
             headers: Joi.object({'x-access-token':Joi.string()}).unknown(),
         },
@@ -18,7 +18,7 @@ const creditcardbill = {
                 400: Joi.any()
             }
         } 
-    }  */
+    } 
 }
 
 

@@ -8,7 +8,7 @@ const login = {
     handler: loginHandler,
     options: {
         tags: ['api', 'login'],
-        description: 'Rota de autenticação',
+        description: 'Rota de login',
         notes: 'Anotações da rota...',
         validate: {
             payload: LoginRequestDTO

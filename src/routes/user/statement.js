@@ -7,7 +7,7 @@ const statement = {
     handler: statementHandler,
     options: {
         tags: ['api', 'statement'],
-        description: 'Rota de extrato',
+        description: 'Rota de extrato da conta do usuário',
         notes: 'Anotações da rota...',
         validate: {
             headers: Joi.object({'x-access-token':Joi.string()}).unknown(),
