@@ -17,17 +17,31 @@ const setup = async () => {
     account = await accountPromise
     console.log("Account fora da promise --->", account)
 
-    const transporter = nodemailer.createTransport({
-
-        host: account ? "smtp.ethereal.email" : configs.mail.host, //https://ethereal.email/
-        port: account ? 587 : configs.mail.port,
-        secure: false,
-        auth: {
-            user: account ? account.user : configs.mail.user,
-            pass: account ? account.pass : configs.mail.pass
-        },
+    const nodemailerConfigs = () =>{
+        if(account){
+            return {
+    
+                host: "smtp.ethereal.email",
+                port: 587,
+                secure: false,
+                auth: {
+                    user: account.user,
+                    pass: account.pass
+                },
+            } 
+        }else{
+            return{
+                service: 'gmail', 
+                auth: { 
+                    user: configs.mail.user, 
+                    pass: configs.mail.pass 
+                } 
+            }
+        }
         
-    })
+    }
+
+    const transporter = nodemailer.createTransport( nodemailerConfigs() )
 
     return transporter
 }

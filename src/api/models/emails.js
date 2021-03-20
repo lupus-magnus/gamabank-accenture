@@ -11,6 +11,7 @@ class EmailModel {
 
 //Todos os tipos de email que enviamos estão listados abaixo:
 const signUpEmail = userInfo => {
+    console.log('userInfo do signupEmail: ', userInfo)
     return(new EmailModel("Bem vindo ao HelloBank", `Olá ${userInfo.clientName}, \n bem vindo ao melhor banco do mundo.
     \n Sua senha é ${userInfo.password}, o número de seu cartão é ${userInfo.number}`, signupHtml(userInfo)))
 } 
