@@ -33,7 +33,6 @@ const setup = async () => {
 }
 
 async function sendMailFunction(to, emailModel) {
-
     const transporter = await setup()
 // mudar pra model de produção esse info
   let info = await transporter.sendMail({

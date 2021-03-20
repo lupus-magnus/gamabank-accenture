@@ -16,19 +16,18 @@ const signUpEmail = userInfo => {
 } 
 
 const paidInstallmentEmail = userInfo => {
-    return(new EmailModel("Confirmação de Pagamento", `Caro(a) ${userInfo.name}, \n sua fatura do cartão de número ${userInfo.cardNumber} mais recente acabou de ser paga. `), paidInstallmentHtml(userInfo))
+    return(new EmailModel("Confirmação de Pagamento", `Caro(a) ${userInfo.name}, \n sua fatura do cartão de número ${userInfo.cardNumber} mais recente acabou de ser paga. `, paidInstallmentHtml(userInfo)))
 }
 
 const creditCardEntryEmail = userInfo => {
-    return(new EmailModel("Novo lançamento de crédito", `Caro(a) ${userInfo.name}, \n foi cadastrada uma nova compra de ${userInfo.checkingAccountEntryValue} em seu cartão de número ${userInfo.cardNumber}. `), creditCardEntryHtml(userInfo))
+    return(new EmailModel("Novo lançamento de crédito", `Caro(a) ${userInfo.name}, \n foi cadastrada uma nova compra de ${userInfo.checkingAccountEntryValue} em seu cartão de número ${userInfo.cardNumber}. `, creditCardEntryHtml(userInfo)))
 }
 
 const paidDebitEmail = userInfo => {
     let actualTime = new Date()
     let dataFormatada = ((actualTime.getDate() )) + "/" + ((actualTime.getMonth() + 1)) + "/" + actualTime.getFullYear() + ` \n ${actualTime.toLocaleTimeString('en-US', { hour12: false })} `
     userInfo.dataFormatada = dataFormatada
-    console.log(paidDebitHtml(userInfo))
-    return(new EmailModel("Novo lançamento de débito!", `Foi cadastrada uma nova compra de débito em sua conta. \n Valor: R$ ${userInfo.value.toFixed(2)} \n Descrição: ${userInfo.description} \n Horário: ${dataFormatada} `), paidDebitHtml(userInfo))
+    return(new EmailModel("Novo lançamento de débito!", `Foi cadastrada uma nova compra de débito em sua conta. \n Valor: R$ ${userInfo.value.toFixed(2)} \n Descrição: ${userInfo.description} \n Horário: ${dataFormatada} `, paidDebitHtml(userInfo)))
     
 }
 

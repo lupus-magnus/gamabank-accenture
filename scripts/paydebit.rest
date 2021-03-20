@@ -1,6 +1,6 @@
 POST http://localhost:3001/user/paydebit HTTP/1.1
 Content-Type: application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imp1bmlvQGdtYWlsLmNvbSIsImlhdCI6MTYxNjE5NTE3MSwiZXhwIjoxNjE3MDU5MTcxfQ.D2d1oQ0GQNaorV9sjU-Eo-SgmlIXDgV_B0yJikiBosU
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imp1bmlvQGdtYWlsLmNvbSIsImlhdCI6MTYxNjE5OTY3NSwiZXhwIjoxNjE3MDYzNjc1fQ.k48Kg1gNSJmJovoIeA3IEArupxnB-4ei9cErUd3v34Q
 
 {
      "value": 300,

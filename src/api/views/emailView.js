@@ -50,15 +50,15 @@ const creditCardEntryHtml = (userInfo) => {
 const paidDebitHtml = (userInfo) => {
     return (`
     <div style="display: flex; justify-content: center;">
-        <img src="https://images-ext-1.discordapp.net/external/d_5YjsmAFRhtXK5fbyG_0LIwn1-gGv09hFWMtZRv4f8/https/upload.wikimedia.org/wikipedia/commons/thumb/6/65/Credit_or_Debit_Card_Flat_Icon_Vector.svg/1200px-Credit_or_Debit_Card_Flat_Icon_Vector.svg.png?width=702&height=702" style="width: 250px;">
-        <div style="display: flex; flex-direction: column; margin-left: 20px;">
-             <h1 style="color:#013a63; align-text: center; font-family: 'Helvetica', sans-serif; font-size: 20px">Novo lançamento de débito!</h1>
-             <h2 style= "align-text: center; font-family: 'Helvetica', sans-serif; font-size: 14px;"> Uma nova compra de débito foi cadastrada!</h2>
-             <p style= "align-text: center; font-family: 'Helvetica', sans-serif; font-size: 14px;">Valor: R$ ${userInfo.value.toFixed(2)} </p>
-             <p style= "align-text: center; font-family: 'Helvetica', sans-serif; font-size: 14px;">Descrição: ${userInfo.description}</p>
-             <p style= "align-text: center; font-family: 'Helvetica', sans-serif; font-size: 14px;">Horário: ${userInfo.dataFormatada}</p>
-        </div>
+    <img src="https://images-ext-1.discordapp.net/external/d_5YjsmAFRhtXK5fbyG_0LIwn1-gGv09hFWMtZRv4f8/https/upload.wikimedia.org/wikipedia/commons/thumb/6/65/Credit_or_Debit_Card_Flat_Icon_Vector.svg/1200px-Credit_or_Debit_Card_Flat_Icon_Vector.svg.png?width=702&height=702" style="width: 250px;">
+    <div style="display: flex; flex-direction: column; margin-left: 20px;">
+         <h1 style="color:#013a63; align-text: center; font-family: 'Helvetica', sans-serif; font-size: 20px">Novo lançamento de débito!</h1>
+         <h2 style= "align-text: center; font-family: 'Helvetica', sans-serif; font-size: 14px;"> Uma nova compra de débito foi cadastrada!</h2>
+         <p style= "align-text: center; font-family: 'Helvetica', sans-serif; font-size: 14px;">Valor: R$ ${userInfo.value.toFixed(2)} </p>
+         <p style= "align-text: center; font-family: 'Helvetica', sans-serif; font-size: 14px;">Descrição: ${userInfo.description}</p>
+         <p style= "align-text: center; font-family: 'Helvetica', sans-serif; font-size: 14px;">Horário: ${userInfo.dataFormatada}</p>
     </div>
+</div>
     `)
 }
 
