@@ -1,15 +1,18 @@
 const paycreditHandler = require('../../api/controllers/userControllers/paycredit.controller')
+const {PayCreditDTO} = require('../../api/models/dto/paycredit.dto')
+const Joi = require('joi')
+
 const paycredit = {
     method:'POST',
     path: '/user/paycredit',
     handler: paycreditHandler,
-   /*  options: {
-        tags: ['api', 'transfer'],
-        description: 'Rota de transferência',
+    options: {
+        tags: ['api', 'credit'],
+        description: 'Rota de lançamento de crédito',
         notes: 'Anotações da rota...',
         validate: {
             headers: Joi.object({'x-access-token':Joi.string()}).unknown(),
-            payload: TransferRequestDTO
+            payload: PayCreditDTO
             
         },
         
@@ -19,7 +22,7 @@ const paycredit = {
                 400: Joi.any()
             }
         } 
-    } */
+    } 
 }
 
 
