@@ -3,7 +3,7 @@ const { getUserTokenData } = require('../../services/userTokenData.service')
 const CheckingTransaction = require('../../models/checkingTransaction')
 const {verify} = require('../../services/auth.service')
 const {sendPaidDebitEmail} = require('../../services/email.service')
-const { should } = require('chai')
+
 
 const paydebitHandler = async (request, h) => {
     const token = request.headers['x-access-token']
