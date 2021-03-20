@@ -11,7 +11,7 @@ const transfer = {
         description: 'Rota de transferência',
         notes: 'Anotações da rota...',
         validate: {
-            headers: Joi.object({'x-access-token':Joi.string()}).unknown(),
+            headers: Joi.object({'x-access-token':Joi.string().optional()}).unknown(),
             payload: TransferRequestDTO
             
         },

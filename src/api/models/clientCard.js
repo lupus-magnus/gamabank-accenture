@@ -3,7 +3,7 @@ class ClientCard{
         this.number = number,
         this.holder = holder ,
         this.expiration = expiration,
-        this.cvv = cvv,
+        this.cvv = Number(cvv),
         this.password = password,
         this.encryptedPassword = encryptedPassword,
         this.salt = salt

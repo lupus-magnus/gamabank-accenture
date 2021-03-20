@@ -1,6 +1,6 @@
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`gamabank` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`hellobank` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
-USE `gamabank`;
+USE `hellobank`;
 
 /*Table structure for table `accountoperation` */
 

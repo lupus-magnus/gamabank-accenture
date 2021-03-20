@@ -39,6 +39,7 @@ const newTransferCheckout = async transferData => {
 const newTransfer = async (transferOut, transferIn) => {
     if (!new validate.ValidaCPF(transferIn.userCPF).valida()) throw new Error("CPF inválido")
     const clientAccount = await getClientByAccount(transferIn.accNumber) 
+    if(transferOut.accNumber === transferIn.accNumber) throw new Error("Não é possível realizar transferência para a própria conta")
     if (clientAccount.clientCPF !== transferIn.userCPF) throw new Error('CPF não corresponde com a conta')
     await newTransferCheckout(transferOut)
     await newTransferReceived(transferIn)
