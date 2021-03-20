@@ -43,7 +43,7 @@ const newCreditPosting = async (creditCardTransaction,newLimit) => {
     
                 const {installments} = creditCardTransaction 
                 for(installment of installments){
-                    const installmentSQL = `INSERT INTO creditcardentrieinstallment (creditCardEntrieCod,creditCardEntrieInstallmentNumber, creditCardEntrieInstallmentValue,creditCardEntrieInstallmentDate) VALUES(${insertId},${installment.number}, ${installment.value}, "${installment.date}")`
+                    const installmentSQL = `INSERT INTO creditcardentrieinstallment (creditCardEntrieCod,creditCardEntrieInstallmentNumber, creditCardEntrieInstallmentValue,creditCardEntrieInstallmentDate, creditCardEntrieInstallmentStatus) VALUES(${insertId},${installment.number}, ${installment.value}, "${installment.date}", "open")`
                 
                     try{
                         await executeInTransaction(installmentSQL)
