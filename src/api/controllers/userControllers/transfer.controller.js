@@ -8,15 +8,13 @@ const {getClientByAccount} = require('../../repository/client.repository')
 const transferHandler = async (request, h) => {
 
    const token = request.headers['x-access-token']
-   console.log(request.payload)
    if (token) {
       try {
 
          const { clientCPF, checkingAccountNumber } = await getUserTokenData(token) // dados out cpf e conta
-         const { CPF, accAnother, value } = request.payload
-         const transferOut = new CheckingTransaction({ userCPF: clientCPF, value: value, account: checkingAccountNumber, bank: 999, accAnother: accAnother })
-         const transferIn = new CheckingTransaction({ userCPF: CPF, value: value, account: accAnother, bank: 999, accAnother: checkingAccountNumber })
-         
+         const { CPF, accAnother, value, description } = request.payload
+         const transferOut = new CheckingTransaction({ userCPF: clientCPF, value: value, account: checkingAccountNumber, bank: 999, accAnother: accAnother, description: description })
+         const transferIn = new CheckingTransaction({ userCPF: CPF, value: value, account: accAnother, bank: 999, accAnother: checkingAccountNumber, description:description })
          return await newTransfer(transferOut, transferIn)
 
       } catch (err) {
@@ -27,7 +25,9 @@ const transferHandler = async (request, h) => {
    try {
       const { CPF } = request.payload
       if (new validate.ValidaCPF(CPF).valida()) {
-         const transferData = new CheckingTransaction(request.payload)
+         const { CPF, accAnother, value, account, bank, description } = request.payload
+         const transferData = new CheckingTransaction({userCPF: CPF, value: value, account: account, bank: bank, accAnother: accAnother, description: description})
+         //{userCPF, value, account, bank, accAnother, description}
          
          return await newTransferReceived(transferData)
       }
