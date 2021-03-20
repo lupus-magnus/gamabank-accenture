@@ -1,5 +1,5 @@
-const database = require('../../helpers/database.util.js')
-const dateToUtc = require('../../helpers/dateToUtc.js')
+const database = require('../../helpers/database.util')
+const dateToUtc = require('../../helpers/dateToUTC')
 
 //ENTRADAS DAS DUAS FUNÇÕES: {acc, initDate, endDate}
 
