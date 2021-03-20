@@ -92,7 +92,8 @@ CREATE TABLE `creditcardentrieinstallment` (
   `creditCardEntrieInstallmentNumber` INT(11) NOT NULL,
   `creditCardEntrieInstallmentValue` DECIMAL(10,2) NOT NULL,
   `creditCardEntrieInstallmentDate` DATE NOT NULL,
-  `creditCardEntrieInstallmentCreatedAt` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+  `creditCardEntrieInstallmentCreatedAt` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `creditCardEntrieInstallmentStatus` ENUM('open','payed') NOT NULL
   PRIMARY KEY (`creditCardEntrieCod`,`creditCardEntrieInstallmentNumber`)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
@@ -153,6 +154,7 @@ CREATE TABLE `checkingaccountentry` (
   `bankCode` INT(11) DEFAULT NULL,
   `checkingAccountEntryCPF` CHAR(11) DEFAULT NULL,
   `checkingAccountEntryAccountOrigin` INT(11) DEFAULT NULL,
+  `checkingAccountEntryDescription` VARCHAR(255) DEFAULT NULL,
   PRIMARY KEY (`checkingAccountEntryNumber`,`checkingAccountNumber`),
   KEY `checkingAccountNumber` (`checkingAccountNumber`),
   KEY `bankCode` (`bankCode`),
@@ -161,5 +163,4 @@ CREATE TABLE `checkingaccountentry` (
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 
-ALTER TABLE checkingaccountentry
-ADD COLUMN checkingAccountEntryDescription VARCHAR(255);
+
