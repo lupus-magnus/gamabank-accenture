@@ -3,7 +3,7 @@ const root = {
     method:'GET',
     path: '/',
     handler: (req, h) => {
-        return "Agora vai..."
+       return h.redirect("https://github.com/paulotelles/gamabank-accenture")
     }
 }
 

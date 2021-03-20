@@ -86,4 +86,4 @@ const payCreditStatement = async (creditCardTransaction,newLimit) => {
 
 
 
-module.exports = {newCreditPosting}
+module.exports = payCreditStatement
