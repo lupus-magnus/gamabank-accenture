@@ -7,7 +7,9 @@ const TransferRequestDTO = Joi.object({
 
     accAnother: Joi.number().required(), 
     CPF: Joi.string(),
-    value: Joi.number()
+    value: Joi.number(),
+    account: Joi.number(),
+    bank: Joi.number()
 
 }).label('TransferRequestDTO')
 

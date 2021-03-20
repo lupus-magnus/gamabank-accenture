@@ -1,14 +1,4 @@
-USE `gamabank`;
-
-/*Data for the table `accountoperation` */
-
-insert  into `accountoperation`(`accountOperationCod`,`accountOperationName`,`accountOperationStatus`) values 
-(1,'Transfer','Active'),
-(2,'Withdraw','Active'),
-(3,'Deposit','Active'),
-(4,'Payment','Active');
-
-/*Data for the table `bank` */
+USE `hellobank`;
 
 insert  into `bank`(`bankCode`,`bankName`,`bankStatus`) values 
 (0,'BMF Bovespa S.A. – Bolsa de Valores, Mercadorias e Futuros – Camara BMFBOVESPA','Active'),
@@ -282,4 +272,28 @@ insert  into `bank`(`bankCode`,`bankName`,`bankStatus`) values
 (756,'Bancoob – Banco Cooperativo Do Brasil S.A.','Active'),
 (757,'Banco Keb Hana Do Brasil S.A.','Active'),
 (999,'GamaBank','Active');
+
+
+insert  into `checkingaccount`(`checkingAccountNumber`,`clientCod`,`checkingAccountBalance`,`checkingAccountCreatedDate`,`checkingAccountStatus`) values 
+(1,1,0.00,'2021-03-20 11:27:52','Active'),
+(2,2,0.00,'2021-03-20 11:30:06','Active'),
+(3,3,0.00,'2021-03-20 11:38:37','Active'),
+(4,4,0.00,'2021-03-20 11:40:17','Active'),
+(5,5,0.00,'2021-03-20 11:41:37','Active');
+
+
+insert  into `client`(`clientCod`,`clientEmail`,`clientPassword`,`clientSalt`,`clientName`,`clientCPF`,`clientStatus`,`clientCreatedDate`) values 
+(1,'renatocalebnogueira@ruizonline.com.br','$2b$10$p6Br3tMRu8eNDSfShzi0A.Rrjb9gFt/nUSZkz9x1kM9bI8gmRcqDy','$2b$10$p6Br3tMRu8eNDSfShzi0A.','Renato Caleb Nogueira','01196253854','Active','2021-03-20 11:27:52'),
+(2,'thiagoguilhermedepaula-76@gruposantin.com.br','$2b$10$HUrv42gnwPk8UkJzcj1SvufxPVoylC4WwadALJXACWTLSGh/.uyXS','$2b$10$HUrv42gnwPk8UkJzcj1Svu','Thiago Guilherme de Paula','78229906831','Active','2021-03-20 11:30:06'),
+(3,'tterezapriscilaluananogueira@patriciagrillo.adv.br','$2b$10$7b6S87wQbph1sqyOsf7Gx.vSKxTw9HuOtlPP3mtzqMMlSWKGHRzs6','$2b$10$7b6S87wQbph1sqyOsf7Gx.','Tereza Priscila Luana Nogueira','37168172875','Active','2021-03-20 11:38:37'),
+(4,'luizdaniellopes@gmail.com','$2b$10$cldcm7ASq6YE1wBnUbbVw.POW27s8aKynnngP3DFwQ7XLYY9V5aXW','$2b$10$cldcm7ASq6YE1wBnUbbVw.','Luiz Daniel Lopes','56017671812','Active','2021-03-20 11:40:17'),
+(5,'nicolesuelinascimento@mectron.com.br','$2b$10$V/34KGoDGLDNpMaZSoNobOXlw61zQfRsknU4XRrSE42AazRabxdi2','$2b$10$V/34KGoDGLDNpMaZSoNobO','Nicole Sueli Nascimento','79697008884','Active','2021-03-20 11:41:37');
+
+
+insert  into `clientcard`(`clientCardNumber`,`clientCod`,`checkingAccountNumber`,`clientcardHolder`,`clientcardPassword`,`clientcardSalt`,`clientcardExpirationDate`,`clientcardCVV`,`clientCreditCardLimit`,`clientCardCreatedDate`) values 
+('4024007107476318',1,1,'RENATO C NOGUEIRA','$2b$10$vV/YdJyknWCuP1c3pD.9z.l0ebfZNyUSPkzNv0jvhmKoF73CffDDe','$2b$10$vV/YdJyknWCuP1c3pD.9z.','06/24',650,200.00,'2021-03-20 11:27:52'),
+('4532183417938308',3,3,'TEREZA P L NOGUEIRA','$2b$10$U54Wk.hqoKt/K6udP/JMXOimoyUlrx4tNV6g3LeiEdFcHcHVK1UhO','$2b$10$U54Wk.hqoKt/K6udP/JMXO','03/25',133,800.00,'2021-03-20 11:38:37'),
+('4539618663989128',4,4,'LUIZ D LOPES','$2b$10$/dxtGFglEmrky.dz45G59uo/uughkNPIgeOcx10Tt11Ajt6JoHYL2','$2b$10$/dxtGFglEmrky.dz45G59u','07/23',223,1600.00,'2021-03-20 11:40:17'),
+('4916087883594154',5,5,'NICOLE S NASCIMENTO','$2b$10$.8XjLIQTqq/4ucHdQ5aNLeqrB0IXtVfWsjq0FpCl/wcCYucnt3/lO','$2b$10$.8XjLIQTqq/4ucHdQ5aNLe','11/24',811,4000.00,'2021-03-20 11:41:37'),
+('4929887934073735',2,2,'THIAGO G PAULA','$2b$10$Ub6f8VkBSKjcVDPuj0cMKORy15zfUJ.hGlYEr.UInb0F1fl/b4MV.','$2b$10$Ub6f8VkBSKjcVDPuj0cMKO','10/25',296,10500.00,'2021-03-20 11:30:06');
 
