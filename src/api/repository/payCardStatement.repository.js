@@ -24,37 +24,48 @@ const executeInTransaction = async (sqlstatement) => {
 
 
 
-const newCreditPosting = async (creditCardTransaction,newLimit) => {
+
+const payCardStatement = async (creditCardNumber, date, avaliableLimit ) => {
     return new Promise(async(resolve, reject) => {
         await openConnection()
         connection.beginTransaction(async err =>{
             if(err) throw new Error("sintaxe inválida")
             try{
-                const {clientCard, clientCod, cardEntrieValue, installmentNumber, description} = creditCardTransaction
-                
-                const newCardentrieSQL = `INSERT INTO cardentrie (clientCardNumber, clientCod, cardEntrieType, cardEntrieValue, cardEntrieCreditInstallment, cardEntrieCreditDescription) VALUES("${clientCard}", ${clientCod}, "credit", ${cardEntrieValue}, ${installmentNumber}, "${description}")`
-                let insertId
+                const newCardentrieSQL = `SELECT inst.creditCardEntrieInstallmentNumber, inst.creditCardEntrieCod, inst.creditCardEntrieInstallmentDate,  inst.creditCardEntrieInstallmentValue,  cardentrie.cardEntrieCreditDescription, inst.creditCardEntrieInstallmentStatus FROM cardentrie
+                INNER JOIN clientCard ON clientCard.clientCardNumber = cardentrie.clientCardNumber
+                INNER JOIN creditcardentrieinstallment AS inst ON  inst.creditCardEntrieCod = cardentrie.cardEntrieCod
+                WHERE clientCard.clientCardNumber = "${creditCardNumber}" AND inst.creditCardEntrieInstallmentDate LIKE "${date}%" AND inst.creditCardEntrieInstallmentStatus = "open"`
+                let resultArray
                 try{
                    const result = await executeInTransaction(newCardentrieSQL)
-                   insertId = result.insertId
+                   if(result.length === 0) throw new Error("Não existe fatura para esse período.")
+                   resultArray = result
                 }catch(err) {
+
                     throw err
                 }
-    
-                const {installments} = creditCardTransaction 
-                for(installment of installments){
-                    const installmentSQL = `INSERT INTO creditcardentrieinstallment (creditCardEntrieCod,creditCardEntrieInstallmentNumber, creditCardEntrieInstallmentValue,creditCardEntrieInstallmentDate, creditCardEntrieInstallmentStatus) VALUES(${insertId},${installment.number}, ${installment.value}, "${installment.date}", "open")`
+                
+
+                let sumValue = 0
+                for(installment of resultArray){
+
+                    const {creditCardEntrieInstallmentNumber, creditCardEntrieCod, creditCardEntrieInstallmentValue} = installment
+                    sumValue += creditCardEntrieInstallmentValue
+                    const installmentSQL = `UPDATE creditcardentrieinstallment SET creditcardentrieinstallment.creditCardEntrieInstallmentStatus = "payed" WHERE creditcardentrieinstallment.creditCardEntrieInstallmentNumber = ${creditCardEntrieInstallmentNumber} AND creditcardentrieinstallment.creditCardEntrieCod = ${creditCardEntrieCod}`
                 
                     try{
                         await executeInTransaction(installmentSQL)
                     }catch(err) {
+                        
                         throw err
                     }
                               
                 }
 
+                let newLimit = avaliableLimit + sumValue
+
                 const updateLimitSQL = `UPDATE clientcard SET clientcard.clientCreditCardLimitAvailable = ${newLimit}
-                WHERE clientcard.clientCardNumber = "${clientCard}"`
+                WHERE clientcard.clientCardNumber = "${creditCardNumber}"`
                 try{
                     await executeInTransaction(updateLimitSQL)
                 }catch(err) {
@@ -86,4 +97,4 @@ const newCreditPosting = async (creditCardTransaction,newLimit) => {
 
 
 
-module.exports = {newCreditPosting}
+module.exports = payCardStatement
