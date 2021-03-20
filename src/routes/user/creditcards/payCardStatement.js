@@ -1,8 +1,8 @@
-const billpaymentHandler = require('../../../api/controllers/userControllers/creditcardControllers/billpayment.controller')
+const payCardStatementHandler = require('../../../api/controllers/userControllers/creditcardControllers/payCardStatement.controller')
 const billpayment = {
     method:'POST',
     path: '/user/creditcards/{id}/{yyyymm}/pay',
-    handler: billpaymentHandler,
+    handler: payCardStatementHandler,
    /*  options: {
         tags: ['api', 'transfer'],
         description: 'Rota de transferência',
