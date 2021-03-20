@@ -1,10 +1,10 @@
-const creditcardbillHandler = require('../../../api/controllers/userControllers/creditcardControllers/creditcardbill.controller')
+const creditCardStatementHandler = require('../../../api/controllers/userControllers/creditcardControllers/creditCardStatement.controller')
 const Joi = require('joi')
 
 const creditcardbill = {
     method:'GET',
-    path: '/user/creditcards/{id}/{yyyymm}', // ?timeinterval = timestamp
-    handler: creditcardbillHandler,
+    path: '/user/creditcards/{date}', // ?timeinterval = timestamp
+    handler: creditCardStatementHandler,
     /* options: {
         tags: ['api', 'credit'],
         description: 'Rota de pagamento de fatura ',

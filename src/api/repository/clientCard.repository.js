@@ -26,7 +26,25 @@ const getUserCardData = async (cardNumber) => {
     })
 }
 
-module.exports = {insertCard, getUserCardData}
+const getClientCard = async (clientCod) => {
+    return new Promise(async(resolve, reject) => {
+        try{
+            const sqlstatement = `SELECT * FROM clientcard WHERE clientcard.clientCod = ${clientCod}`
+
+            const result = await database.query(sqlstatement)
+            if(result.length === 0){
+                throw new Error("Não existe cartão")
+            }
+            resolve(result[0])
+        } catch(err){
+            reject(err)
+        }
+    })
+}
+
+
+
+module.exports = {insertCard, getUserCardData, getClientCard}
 
 
 

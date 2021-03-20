@@ -11,7 +11,7 @@ const paycreditHandler = async (request, h) => {
         const {cardNumber,value,installments, description} = request.payload
         const {expiration, holder, password, cvv} = request.payload
         const creditCard = new ClientCard(cardNumber, holder, expiration, cvv, password)
-        const creditCardTransaction = new CreditCardTransaction({clientCard:cardNumber,cardEntrieValue:value,installmentNumber:installments, description})
+        const creditCardTransaction = new CreditCardTransaction({clientCard:cardNumber,cardEntrieValue:value,installmentNumber:installments, description:description})
         const msg = await creditTransaction(creditCardTransaction, creditCard)
         return msg
 
