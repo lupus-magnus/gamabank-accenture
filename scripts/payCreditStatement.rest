@@ -1,0 +1,7 @@
+POST http://localhost:3001/user/creditcards/payment/2021-04 HTTP/1.1
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJlbmF0b2NhbGVibm9ndWVpcmFAcnVpem9ubGluZS5jb20uYnIiLCJpYXQiOjE2MTYyNzAzNjEsImV4cCI6MTYxNzEzNDM2MX0.qyMqvxcmn-nb7H24JdkX46iJdKp6Okk0_HKflk9YvqY
+
+{   
+     "data":"2021-03"
+}
