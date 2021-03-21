@@ -1,8 +1,8 @@
 const Joi = require('joi');
 
 const LoginRequestDTO = Joi.object({
-    clientEmail: Joi.string().required(),
-    clientPassword: Joi.string().required()
+    clientEmail: Joi.string().required().example('johndoe@example.com'),
+    clientPassword: Joi.string().required().example('s3nh@b0A')
 }).label('LoginRequestDTO')
 
 
@@ -16,10 +16,10 @@ const LoginResponseDTO = Joi.object({
 
 
 const SignUpRequestDTO = Joi.object({
-    clientEmail: Joi.string().required(),
-    clientPassword:Joi.string().required(),
-    clientName:Joi.string().required(),
-    clientCPF:Joi.string().required() 
+    clientEmail: Joi.string().required().example('johndoe@example.com'),
+    clientPassword:Joi.string().required().example('s3nh@b0A'),
+    clientName:Joi.string().required().example('John Doe'),
+    clientCPF:Joi.string().required().example('12345678909')
     
 }).label('SignUpRequestDTO')
 

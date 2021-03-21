@@ -3,10 +3,10 @@ Content-Type: application/json
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdhYnJpZWxhY2Npb2xpQGdtYWlsLmNvbSIsImlhdCI6MTYxNjM0NzYyMywiZXhwIjoxNjE3MjExNjIzfQ.GgaV4KMmrYdacobrkHLXHMNOYfO3pdpPdw-lOR1K-IA
 
 {
-    "accAnother": 1,
-    "value": 1000,
+    "destinyAccount": 1,
+    "value": 1,
     "CPF": "01196253854",
-    "description": "Paulista Infeliz"
+    "description": "Paulista Infeliz :D"
 }
 
 ###
@@ -15,9 +15,9 @@ Content-Type: application/json
 
 
 {
-    "account": 1,
-    "bank": 4,
-    "accAnother": 105,
+    "destinyAccount": 6,
+    "bank": 999,
+    "originAccount": 105,
     "value": 10000,
     "CPF": "06889461002"
 }

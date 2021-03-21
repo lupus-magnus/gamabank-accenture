@@ -5,12 +5,17 @@ const Joi = require('joi');
 
 const TransferRequestDTO = Joi.object({
 
-    accAnother: Joi.number().required(), 
-    CPF: Joi.string(),
+    destinyAccount: Joi.number().required()
+        .description('Aqui, você passa a conta de quem receberá a transferência.'), 
+    CPF: Joi.string().example('12345678909')
+        .description('CPF válido.'),
     value: Joi.number(),
-    account: Joi.number(),
-    bank: Joi.number(),
-    description: Joi.string(),
+    originAccount: Joi.number()
+        .description('A conta a partir da qual sairá a transferência.'),
+    bank: Joi.number()
+        .description('Recebe um número que representa um banco na tabela BACEN.'),
+    description: Joi.string()
+        .description('Descrição da transferência'),
 
 }).label('TransferRequestDTO')
 
