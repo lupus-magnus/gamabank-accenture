@@ -37,6 +37,12 @@ O projeto HelloBank foi desenvolvido durante o decorrer do treinamento em Node.j
 
 <br>
 
+## 🌐 Live Version
+
+https://gamabank-accenture.herokuapp.com/
+
+<br>
+
 ## 🚀 Tecnologias e metodologias utilizadas
 
 <br>
@@ -45,11 +51,17 @@ O projeto HelloBank foi desenvolvido durante o decorrer do treinamento em Node.j
 
 - Javascript
 - MySQL
+- NodeJs
+- Npm
+- Aws - RDS
+- HTML & CSS
+- Heroku
+- Café ☕ 
 
 ### Metodologias
 
 - Padrão de arquitetura Model View Controller (MVC)
-- Desenvolvimento orientado a testes (TDD)
+- Metodologia Kanban
 
 ### Dependências
 
