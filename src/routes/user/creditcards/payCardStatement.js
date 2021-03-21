@@ -9,8 +9,8 @@ const billpayment = {
     handler: payCardStatementHandler,
     options: {
         tags: ['api', 'pay-creditcardstatements'],
-        description: 'Rota para pagar as parcelas de uma compra no cartão de crédito',
-        notes: 'Nessas rota, é imprescindível passar o body com as informações ',
+        description: 'Rota para pagar uma parcela de uma compra no cartão de crédito',
+        notes: 'Para pagar uma parcela, é necessário passar o token do usuário no header da requisição e informar no body o mês e o ano da parcela (date).  ',
         validate: {
             headers: Joi.object({'x-access-token':Joi.string()}).unknown(),
             payload: PayCreditStatementDTO

@@ -8,8 +8,8 @@ const login = {
     handler: loginHandler,
     options: {
         tags: ['api', 'login'],
-        description: 'Rota de login',
-        notes: 'Anotações da rota...',
+        description: 'Realiza o login do usuário no sistema',
+        notes: 'Para realizar o login, é necessário enviar o email e a senha usados no signup no body da requisição.',
         validate: {
             payload: LoginRequestDTO
         },
