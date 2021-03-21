@@ -1,8 +1,8 @@
 POST http://localhost:3001/user/paydebit HTTP/1.1
 Content-Type: application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1hdGhldXNjYXJkb3NvMUBnbWFpbC5jb20iLCJpYXQiOjE2MTYyNTk3NzUsImV4cCI6MTYxNzEyMzc3NX0.yj6svXv2werAZPVVHKP9o9g8ACai3EXnUf-7Jd5m9GI
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdhYnJpZWxhY2Npb2xpQGdtYWlsLmNvbSIsImlhdCI6MTYxNjM0NzYyMywiZXhwIjoxNjE3MjExNjIzfQ.GgaV4KMmrYdacobrkHLXHMNOYfO3pdpPdw-lOR1K-IA
 
 {
-     "value": 29999.90,
-     "description": "Fusca Tunadão Voador"
+     "value": 5000.00,
+     "description": "Condominio"
 }

@@ -8,7 +8,8 @@ const PayCreditDTO = Joi.object({
     description: Joi.string().required(),
     expiration: Joi.string().required(),
     holder: Joi.string().required(),
-    cvv: Joi.string().required()
+    cvv: Joi.string().required(),
+    password: Joi.string().required()
 
 }).label('PayCreditDTO')
 

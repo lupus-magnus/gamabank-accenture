@@ -7,7 +7,7 @@
 //Iteracao das entradas:
 
 class StatementRegister{
-    constructor(checkoutOrEntry, date, value, operationType, description){
+    constructor(operationType, date, value, checkoutOrEntry, description){
     
         this.date = date,
         this.value = value,

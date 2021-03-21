@@ -5,9 +5,8 @@ const payCardStatementHandler = async (request, h) => {
     const token = request.headers['x-access-token']
     if(token){
         try{
-            const date = request.params.date
+            const {date} = request.payload
             const { clientCod } = await getUserTokenData(token)
-            
             const cardStatement = await creditCardStatement(date, clientCod)
             return cardStatement
         }catch(err){

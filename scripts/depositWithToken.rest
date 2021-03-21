@@ -1,3 +1,9 @@
-GET http://localhost:3001/user/creditcards/2021-04 HTTP/1.1
+POST http://localhost:3001/user/deposit HTTP/1.1
 Content-Type: application/json
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdhYnJpZWxhY2Npb2xpQGdtYWlsLmNvbSIsImlhdCI6MTYxNjM0NzYyMywiZXhwIjoxNjE3MjExNjIzfQ.GgaV4KMmrYdacobrkHLXHMNOYfO3pdpPdw-lOR1K-IA
+
+{
+     "account": 6,
+     "value": 30000,
+     "description": "Um belo dia para Dinheiro"
+}

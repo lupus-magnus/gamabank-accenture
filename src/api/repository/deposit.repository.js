@@ -4,12 +4,13 @@ const newDepositQuery = async (obj) => {
     const {
     value:checkingAccountEntryValue,
     accNumber:checkingAccountNumber,
-    userCPF: checkingAccountEntryCPF } = obj
+    userCPF: checkingAccountEntryCPF,
+    description } = obj
 
     let depositSQL = `
     INSERT INTO checkingaccountentry
-    (checkingAccountEntryValue,checkingAccountNumber, checkingAccountEntryCPF,checkingAccountEntryType)
-    VALUES (${checkingAccountEntryValue},"${checkingAccountNumber}", "${checkingAccountEntryCPF}","deposit")
+    (checkingAccountEntryValue,checkingAccountNumber, checkingAccountEntryCPF,checkingAccountEntryType,checkingAccountEntryDescription)
+    VALUES (${checkingAccountEntryValue},"${checkingAccountNumber}", "${checkingAccountEntryCPF}","deposit","${description}")
     `
 
     try{

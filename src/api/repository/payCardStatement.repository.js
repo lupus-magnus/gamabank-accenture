@@ -32,9 +32,9 @@ const payCardStatement = async (creditCardNumber, date, avaliableLimit ) => {
             if(err) throw new Error("sintaxe inválida")
             try{
                 const newCardentrieSQL = `SELECT inst.creditCardEntrieInstallmentNumber, inst.creditCardEntrieCod, inst.creditCardEntrieInstallmentDate,  inst.creditCardEntrieInstallmentValue,  cardentrie.cardEntrieCreditDescription, inst.creditCardEntrieInstallmentStatus FROM cardentrie
-                INNER JOIN clientCard ON clientCard.clientCardNumber = cardentrie.clientCardNumber
+                INNER JOIN clientcard ON clientcard.clientCardNumber = cardentrie.clientCardNumber
                 INNER JOIN creditcardentrieinstallment AS inst ON  inst.creditCardEntrieCod = cardentrie.cardEntrieCod
-                WHERE clientCard.clientCardNumber = "${creditCardNumber}" AND inst.creditCardEntrieInstallmentDate LIKE "${date}%" AND inst.creditCardEntrieInstallmentStatus = "open"`
+                WHERE clientcard.clientCardNumber = "${creditCardNumber}" AND inst.creditCardEntrieInstallmentDate LIKE "${date}%" AND inst.creditCardEntrieInstallmentStatus = "open"`
                 let resultArray
                 try{
                    const result = await executeInTransaction(newCardentrieSQL)
@@ -45,7 +45,6 @@ const payCardStatement = async (creditCardNumber, date, avaliableLimit ) => {
                     throw err
                 }
                 
-
                 let sumValue = 0
                 for(installment of resultArray){
 

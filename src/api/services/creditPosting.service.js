@@ -1,6 +1,6 @@
 const {getUserCardData} = require('../repository/clientCard.repository')
 const generateInstallment = require('./installment.service')
-const creditPostingRepository = require('../repository/creditPosting.repository')
+const newCreditPosting = require('../repository/creditPosting.repository')
 const validateCardData = require('./validateClientCard.service')
 // falta o clientCod
 const creditTransaction = async (creditCardTransaction, creditCard) => {
@@ -23,7 +23,7 @@ const creditTransaction = async (creditCardTransaction, creditCard) => {
         const newLimit = cardData.clientCreditCardLimitAvailable - cardEntrieValue
 
         creditCardTransaction.installments = generateInstallment(installmentNumber,cardEntrieValue,creditPostingDate)
-        const msg = await creditPostingRepository.newCreditPosting(creditCardTransaction,newLimit)
+        const msg = await newCreditPosting(creditCardTransaction,newLimit)
         
         return msg
     }catch(err) {
