@@ -7,7 +7,7 @@ const creditCardStatement = async (date, clientCod) =>{
     try{
         const  {clientCardNumber, clientCreditCardLimitAvailable}  = await getClientCard(clientCod)
         const statements = await payCardStatement(clientCardNumber, date, clientCreditCardLimitAvailable)
-        return statements
+        return ({statements, clientCardNumber})
     }catch(err){
         throw err
     }

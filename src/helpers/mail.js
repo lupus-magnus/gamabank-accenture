@@ -8,14 +8,12 @@ const setup = async () => {
         
         if(configs.env === 'test' || configs.env === 'development'){
             account = await nodemailer.createTestAccount()
-            //console.log("AQUI TEM O ACCOUNT FAKE ------>",account)
             resolve(account)
         }
         resolve(0)
     })
 
     account = await accountPromise
-    console.log("Account fora da promise --->", account)
 
     const nodemailerConfigs = () =>{
         if(account){
@@ -48,7 +46,7 @@ const setup = async () => {
 
 async function sendMailFunction(to, emailModel) {
     const transporter = await setup()
-// mudar pra model de produção esse info
+
   let info = await transporter.sendMail({
     from: '"HelloBank😎" <foo@example.com>', // sender address
     to: to, // list of receivers
