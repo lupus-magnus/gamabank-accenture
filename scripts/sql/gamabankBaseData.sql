@@ -274,14 +274,6 @@ insert  into `bank`(`bankCode`,`bankName`,`bankStatus`) values
 (999,'GamaBank','Active');
 
 
-insert  into `checkingaccount`(`checkingAccountNumber`,`clientCod`,`checkingAccountBalance`,`checkingAccountCreatedDate`,`checkingAccountStatus`) values 
-(1,1,0.00,'2021-03-20 11:27:52','Active'),
-(2,2,0.00,'2021-03-20 11:30:06','Active'),
-(3,3,0.00,'2021-03-20 11:38:37','Active'),
-(4,4,0.00,'2021-03-20 11:40:17','Active'),
-(5,5,0.00,'2021-03-20 11:41:37','Active');
-
-
 insert  into `client`(`clientCod`,`clientEmail`,`clientPassword`,`clientSalt`,`clientName`,`clientCPF`,`clientStatus`,`clientCreatedDate`) values 
 (1,'renatocalebnogueira@ruizonline.com.br','$2b$10$p6Br3tMRu8eNDSfShzi0A.Rrjb9gFt/nUSZkz9x1kM9bI8gmRcqDy','$2b$10$p6Br3tMRu8eNDSfShzi0A.','Renato Caleb Nogueira','01196253854','Active','2021-03-20 11:27:52'),
 (2,'thiagoguilhermedepaula-76@gruposantin.com.br','$2b$10$HUrv42gnwPk8UkJzcj1SvufxPVoylC4WwadALJXACWTLSGh/.uyXS','$2b$10$HUrv42gnwPk8UkJzcj1Svu','Thiago Guilherme de Paula','78229906831','Active','2021-03-20 11:30:06'),
@@ -289,6 +281,12 @@ insert  into `client`(`clientCod`,`clientEmail`,`clientPassword`,`clientSalt`,`c
 (4,'luizdaniellopes@gmail.com','$2b$10$cldcm7ASq6YE1wBnUbbVw.POW27s8aKynnngP3DFwQ7XLYY9V5aXW','$2b$10$cldcm7ASq6YE1wBnUbbVw.','Luiz Daniel Lopes','56017671812','Active','2021-03-20 11:40:17'),
 (5,'nicolesuelinascimento@mectron.com.br','$2b$10$V/34KGoDGLDNpMaZSoNobOXlw61zQfRsknU4XRrSE42AazRabxdi2','$2b$10$V/34KGoDGLDNpMaZSoNobO','Nicole Sueli Nascimento','79697008884','Active','2021-03-20 11:41:37');
 
+insert  into `checkingaccount`(`checkingAccountNumber`,`clientCod`,`checkingAccountBalance`,`checkingAccountCreatedDate`,`checkingAccountStatus`) values 
+(1,1,0.00,'2021-03-20 11:27:52','Active'),
+(2,2,0.00,'2021-03-20 11:30:06','Active'),
+(3,3,0.00,'2021-03-20 11:38:37','Active'),
+(4,4,0.00,'2021-03-20 11:40:17','Active'),
+(5,5,0.00,'2021-03-20 11:41:37','Active');
 
 insert  into `clientcard`(`clientCardNumber`,`clientCod`,`checkingAccountNumber`,`clientcardHolder`,`clientcardPassword`,`clientcardSalt`,`clientcardExpirationDate`,`clientcardCVV`,`clientCreditCardLimit`,`clientCardCreatedDate`) values 
 ('4024007107476318',1,1,'RENATO C NOGUEIRA','$2b$10$vV/YdJyknWCuP1c3pD.9z.l0ebfZNyUSPkzNv0jvhmKoF73CffDDe','$2b$10$vV/YdJyknWCuP1c3pD.9z.','06/24',650,200.00,'2021-03-20 11:27:52'),

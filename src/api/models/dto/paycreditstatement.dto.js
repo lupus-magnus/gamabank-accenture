@@ -2,7 +2,7 @@ const Joi = require('joi');
 
 
 const PayCreditStatementDTO = Joi.object({
-    data: Joi.string().required(),
+    date: Joi.string().required(),
 
 }).label('PayCreditStatementDTO')
 

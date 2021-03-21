@@ -93,7 +93,7 @@ CREATE TABLE `creditcardentrieinstallment` (
   `creditCardEntrieInstallmentValue` DECIMAL(10,2) NOT NULL,
   `creditCardEntrieInstallmentDate` DATE NOT NULL,
   `creditCardEntrieInstallmentCreatedAt` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `creditCardEntrieInstallmentStatus` ENUM('open','payed') NOT NULL
+  `creditCardEntrieInstallmentStatus` ENUM('open','payed') NOT NULL,
   PRIMARY KEY (`creditCardEntrieCod`,`creditCardEntrieInstallmentNumber`)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 

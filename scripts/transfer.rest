@@ -1,11 +1,12 @@
 POST http://localhost:3001/user/transfer HTTP/1.1
 Content-Type: application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJhZ2FtYUBnYW1hLmNvbSIsImlhdCI6MTYxNjA4MDQ5MywiZXhwIjoxNjE2OTQ0NDkzfQ.5TUzlgsUBOQmWqxbo4B9m3DrcknnKQFDYgsXprKKjzQ
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdhYnJpZWxhY2Npb2xpQGdtYWlsLmNvbSIsImlhdCI6MTYxNjM0NzYyMywiZXhwIjoxNjE3MjExNjIzfQ.GgaV4KMmrYdacobrkHLXHMNOYfO3pdpPdw-lOR1K-IA
 
 {
-    "accAnother": 2,
+    "accAnother": 1,
     "value": 1000,
-    "CPF": "83628906067"
+    "CPF": "01196253854",
+    "description": "Paulista Infeliz"
 }
 
 ###

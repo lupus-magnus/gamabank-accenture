@@ -1,5 +1,5 @@
 const database = require('../../helpers/database.util')
-const {dateToUtc} = require('../../helpers/dateToUTC')
+const {dateToUTC} = require('../../helpers/dateToUTC')
 
 //ENTRADAS DAS DUAS FUNÇÕES: {acc, initDate, endDate}
 
@@ -15,7 +15,7 @@ const getCheckouts = async (getCheckoutsParam) => {
     INNER JOIN checkingaccountcheckout AS accOut 
     ON acc.checkingAccountNumber = accOut.checkingAccountNumber
     WHERE acc.checkingAccountNumber = ${getCheckoutsParam.acc} 
-    AND accOut.checkingAccountCheckoutDate BETWEEN '${dateToUtc(getCheckoutsParam.initDate)}' AND '${dateToUtc(getCheckoutsParam.endDate)}';
+    AND accOut.checkingAccountCheckoutDate BETWEEN '${dateToUTC(getCheckoutsParam.initDate)}' AND '${dateToUTC(getCheckoutsParam.endDate)}';
     `
 
     try{
@@ -33,7 +33,7 @@ const getEntries = async (getEntriesParam) => {
     INNER JOIN checkingaccountentry AS accIn 
     ON acc.checkingAccountNumber = accIn.checkingAccountNumber
     WHERE acc.checkingAccountNumber = ${getEntriesParam.acc}
-    AND accIn.checkingAccountEntryDate BETWEEN '${dateToUtc(getEntriesParam.initDate)}' AND '${dateToUtc(getEntriesParam.endDate)}';
+    AND accIn.checkingAccountEntryDate BETWEEN '${dateToUTC(getEntriesParam.initDate)}' AND '${dateToUTC(getEntriesParam.endDate)}';
     `
     try{
         const result = await database.query(sqlStatement)

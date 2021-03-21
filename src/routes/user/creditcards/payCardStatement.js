@@ -5,7 +5,7 @@ const Joi = require('joi')
 const billpayment = {
     method:'POST',
 
-    path: '/user/creditcards/payment/{date}',
+    path: '/user/creditcards/payment/',
     handler: payCardStatementHandler,
     options: {
         tags: ['api', 'pay-creditcardstatements'],

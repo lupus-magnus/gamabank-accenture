@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
 
-    "clientEmail": "renatocalebnogueira@ruizonline.com.br",
-    "clientPassword": "t#QO:o1E"
+    "clientEmail": "gabrielaccioli@gmail.com",
+    "clientPassword": "G@abri3l"
 
 }
