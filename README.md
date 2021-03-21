@@ -1,3 +1,7 @@
+<img width="1000px" src="https://user-images.githubusercontent.com/60127869/111917427-ba2cf700-8a5e-11eb-93bc-c31199ad069e.png">
+
+<br>
+
 # 🏦 HelloBank ||| Invista em você
 
 <br>
@@ -38,6 +42,7 @@ O projeto HelloBank foi desenvolvido durante o decorrer do treinamento em Node.j
 <br>
 
 ## 🌐 Live Version
+
 
 https://gamabank-accenture.herokuapp.com/
 
