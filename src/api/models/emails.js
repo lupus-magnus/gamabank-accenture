@@ -1,5 +1,5 @@
 //Formato do userInfo : nome, número do cartão, ultima entrada do crédito, essas coisas.
-const { signupHtml, paidInstallmentHtml, paidDebitHtml  } = require("../views/emailView")
+const { signupHtml, paidInstallmentHtml, paidDebitHtml, creditCardEntryHtml  } = require("../views/emailView")
 
 class EmailModel {
     constructor( subject, text, html){
@@ -11,7 +11,6 @@ class EmailModel {
 
 //Todos os tipos de email que enviamos estão listados abaixo:
 const signUpEmail = userInfo => {
-    console.log('userInfo do signupEmail: ', userInfo)
     return(new EmailModel("Bem vindo ao HelloBank", `Olá ${userInfo.clientName}, \n bem vindo ao melhor banco do mundo.
     \n Sua senha é ${userInfo.password}, o número de seu cartão é ${userInfo.number}`, signupHtml(userInfo)))
 } 
@@ -21,7 +20,8 @@ const paidInstallmentEmail = userInfo => {
 }
 
 const creditCardEntryEmail = userInfo => {
-    return(new EmailModel("Novo lançamento de crédito", `Caro(a) ${userInfo.name}, \n foi cadastrada uma nova compra de ${userInfo.checkingAccountEntryValue} em seu cartão de número ${userInfo.cardNumber}. `, creditCardEntryHtml(userInfo)))
+    console.log("creditCardEntry userInfo:\t", userInfo)
+    return(new EmailModel("Novo lançamento de crédito", `Caro(a) ${userInfo.clientData.clientName}, \n foi cadastrada uma nova compra de ${userInfo.value} em seu cartão de número ${userInfo.cardNumber}. `, creditCardEntryHtml(userInfo)))
 }
 
 const paidDebitEmail = userInfo => {

@@ -25,7 +25,7 @@ const creditTransaction = async (creditCardTransaction, creditCard) => {
         creditCardTransaction.installments = generateInstallment(installmentNumber,cardEntrieValue,creditPostingDate)
         const msg = await newCreditPosting(creditCardTransaction,newLimit)
         
-        return msg
+        return {clientCod: creditCardTransaction.clientCod, msg}
     }catch(err) {
         throw err
     }
