@@ -7,8 +7,8 @@ const statement = {
     handler: statementHandler,
     options: {
         tags: ['api', 'statement'],
-        description: 'Rota de extrato da conta do usuário',
-        notes: 'Anotações da rota...',
+        description: 'Consulta do extrato da conta corrente do usuário',
+        notes: 'Para consultar o extrato da conta de um período específico, é preciso informar o token no header da requisição e também passar como parâmetros no path da requisição a data de início e de fim do período a ser consultado.',
         validate: {
             headers: Joi.object({'x-access-token':Joi.string()}).unknown(),
             params: Joi.object({

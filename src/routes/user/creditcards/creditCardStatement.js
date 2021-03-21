@@ -8,7 +8,7 @@ const creditcardbill = {
     options: {
         tags: ['api', 'credit-statement'],
         description: 'Rota para pegar a fatura do cartão de crédito ',
-        notes: 'Nessa rota, é importante inserir o token no Header',
+        notes: 'Para consultar as faturas do cartão de crédito, é necessário passar o token no header da requisição e o ano e o mês da consulta no path da requisição. ',
         validate: {
             headers: Joi.object({'x-access-token':Joi.string()}).unknown(),
         },

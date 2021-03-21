@@ -8,8 +8,8 @@ const signup = {
     handler: signupHandler,
     options: {
         tags: ['api', 'signup'],
-        description: 'Rota de signup',
-        notes: 'Anotações da rota...',
+        description: 'Realiza o cadastro do usuário no sistema',
+        notes: 'Para realizar o cadastro, é necessário enviar o email (clientEmail), a senha (clientPassword), o nome do cliente (clientName) e o CPF do cliente (clientCPF) no body da requisição. ',
         validate: {
             payload: SignUpRequestDTO
         },
