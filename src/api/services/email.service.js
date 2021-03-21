@@ -15,7 +15,7 @@ ClientCard {
 
 const sendSignupEmail = async (receiverInfo) => await sendMailFunction(receiverInfo.clientEmail, signUpEmail(receiverInfo)) // TO: email, nome, senha do cartao, numero do cartao, accountNumber,  
 const sendPaidInstallmentEmail = async (receiverInfo) => await sendMailFunction(receiverInfo, paidInstallmentEmail(fakeUser))
-const sendCreditCardEntryEmail = async (receiverInfo) => await sendMailFunction(receiverInfo, creditCardEntryEmail(fakeUser))
+const sendCreditCardEntryEmail = async (receiverInfo) => await sendMailFunction(receiverInfo.clientData.clientEmail, creditCardEntryEmail(receiverInfo))
 const sendPaidDebitEmail = async (receiverInfo) => await sendMailFunction(receiverInfo.email, paidDebitEmail(receiverInfo))
 //Após configuradas as variáveis de ambiente, podemos setar no modelo o HTML de cada um (:
 

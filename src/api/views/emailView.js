@@ -40,11 +40,22 @@ const creditCardEntryHtml = (userInfo) => {
     return (`
     <table>
         <tr>
-            <td rowspan="2"><img src="https://thalassafestival.com/wp-content/uploads/2019/12/registration-icon-png-6.png" style="width: 150px;"></td>
-            <td colspan="2"><h1 style="color:#013a63; align-text: center; font-family: 'Helvetica', sans-serif; font-size: 20px">Caro(a) ${userInfo.name.split(" ")[0]},</h1></td>
+            
+            <td rowspan="4"><img src="https://thalassafestival.com/wp-content/uploads/2019/12/registration-icon-png-6.png" style="width: 150px;"></td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td colspan="2"><h1 style="color:#013a63; align-text: center; font-family: 'Helvetica', sans-serif; font-size: 20px">Caro(a) ${userInfo.clientData.clientName.split(' ')[0]},</h1></td>
         </tr>
         <tr>
-            <td><p style= "align-text: center; font-family: 'Helvetica', sans-serif; font-size: 14px;"> Uma nova compra de ${userInfo.checkingAccountEntryValue} no cartão de número ${userInfo.cardNumber} acabou cadastrada!</p></td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td><p style= "align-text: center; font-family: 'Helvetica', sans-serif; font-size: 14px;"> Uma nova compra de R$ ${userInfo.value.toFixed(2)} no cartão de número ${userInfo.cardNumber} acabou cadastrada!</p></td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td><p style= "align-text: center; font-family: 'Helvetica', sans-serif; font-size: 14px;"> Descrição: ${userInfo.description}</p></td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td><p style= "align-text: center; font-family: 'Helvetica', sans-serif; font-size: 14px;"> Parcelamento em ${userInfo.installments} vezes.</p></td>
         </tr>
     `)
 }
