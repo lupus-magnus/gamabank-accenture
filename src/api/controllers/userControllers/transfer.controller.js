@@ -12,7 +12,7 @@ const transferHandler = async (request, h) => {
       try {
 
          const { clientCPF, checkingAccountNumber } = await getUserTokenData(token) // dados out cpf e conta
-         const { CPF, accAnother, value, description } = request.payload
+         const { CPF, destinyAccount:accAnother, value, description } = request.payload
          const transferOut = new CheckingTransaction({ userCPF: clientCPF, value: value, account: checkingAccountNumber, bank: 999, accAnother: accAnother, description: description })
          const transferIn = new CheckingTransaction({ userCPF: CPF, value: value, account: accAnother, bank: 999, accAnother: checkingAccountNumber, description:description })
          return await newTransfer(transferOut, transferIn)
@@ -25,7 +25,7 @@ const transferHandler = async (request, h) => {
    try {
       const { CPF } = request.payload
       if (new validate.ValidaCPF(CPF).valida()) {
-         const { CPF, accAnother, value, account, bank, description } = request.payload
+         const { CPF, originAccount:accAnother, value, destinyAccount:account, bank, description } = request.payload
          const transferData = new CheckingTransaction({userCPF: CPF, value: value, account: account, bank: bank, accAnother: accAnother, description: description})
          //{userCPF, value, account, bank, accAnother, description}
          
