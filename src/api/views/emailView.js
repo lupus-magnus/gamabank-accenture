@@ -2,11 +2,14 @@ const signupHtml = (userInfo) => {
     return (`
     <table>
         <tr>
-            <td rowspan="5"><img src="https://images-ext-1.discordapp.net/external/C8zbQOejaBVjxWOslOYy4lnjS6hKxMlWrWQPkZyhiv4/https/cdn.pixabay.com/photo/2016/11/05/07/37/credit-card-1799583_960_720.png?width=689&height=457" style="width: 250px;"></td>
+            <td rowspan="6"><img src="https://images-ext-1.discordapp.net/external/C8zbQOejaBVjxWOslOYy4lnjS6hKxMlWrWQPkZyhiv4/https/cdn.pixabay.com/photo/2016/11/05/07/37/credit-card-1799583_960_720.png?width=689&height=457" style="width: 250px;"></td>
             <td colspan="2"><h1 style="color:#013a63; align-text: center; font-family: 'Helvetica', sans-serif; font-size: 20px">Bem vindo ao HelloBank!</h1></td>
         </tr>
         <tr>
             <td><h2 style= "align-text: center; font-family: 'Helvetica', sans-serif; font-size: 14px;"> ${userInfo.clientName.split(' ')[0]}, é um prazer ter você conosco!</h2></td>
+        </tr>
+        <tr>
+            <td><p style= "align-text: center; font-family: 'Helvetica', sans-serif; font-size: 14px;">O número de sua conta: ${userInfo.clientCod} </p></td>
         </tr>
         <tr>
             <td><p style= "align-text: center; font-family: 'Helvetica', sans-serif; font-size: 14px;">Número do cartão e cvv: ${userInfo.number} / ${userInfo.cvv} </p></td>
@@ -28,10 +31,12 @@ const paidInstallmentHtml = (userInfo) => {
     <table>
     <tr>
         <td rowspan="2"><img src="https://imagepng.org/wp-content/uploads/2019/12/check-icone-1-scaled.png" style="width: 150px;"></td>
-        <td colspan="2"><h1 style="color:#013a63; align-text: center; font-family: 'Helvetica', sans-serif; font-size: 20px">Boa, ${userInfo.name.split(" ")[0]}!</h1></td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td colspan="2"><h1 style="color:#013a63; align-text: center; font-family: 'Helvetica', sans-serif; font-size: 20px">Boa, ${userInfo.clientName.split(' ')[0]}!</h1></td>
     </tr>
     <tr>
-        <td><p style= "align-text: center; font-family: 'Helvetica', sans-serif; font-size: 14px;"> A fatura do seu cartão de número ${userInfo.cardNumber} acabou de ser paga!</p></td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td><p style= "align-text: center; font-family: 'Helvetica', sans-serif; font-size: 14px;"> A fatura do seu cartão de número ${userInfo.clientCardNumber} acabou de ser paga!</p></td>
     </tr>
     `)
 }
@@ -47,7 +52,7 @@ const creditCardEntryHtml = (userInfo) => {
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td><p style= "align-text: center; font-family: 'Helvetica', sans-serif; font-size: 14px;"> Uma nova compra de R$ ${userInfo.value.toFixed(2)} no cartão de número ${userInfo.cardNumber} acabou cadastrada!</p></td>
+            <td><p style= "align-text: center; font-family: 'Helvetica', sans-serif; font-size: 14px;"> Uma nova compra de R$ ${userInfo.value.toFixed(2)} no cartão de número ${userInfo.cardNumber} acabou de ser cadastrada!</p></td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>

@@ -16,7 +16,7 @@ const signUpEmail = userInfo => {
 } 
 
 const paidInstallmentEmail = userInfo => {
-    return(new EmailModel("Confirmação de Pagamento", `Caro(a) ${userInfo.name}, \n sua fatura do cartão de número ${userInfo.cardNumber} mais recente acabou de ser paga. `, paidInstallmentHtml(userInfo)))
+    return(new EmailModel("Confirmação de Pagamento", `Caro(a) ${userInfo.clientName}, \n sua fatura do cartão de número ${userInfo.clientCardNumber} mais recente acabou de ser paga. `, paidInstallmentHtml(userInfo)))
 }
 
 const creditCardEntryEmail = userInfo => {
