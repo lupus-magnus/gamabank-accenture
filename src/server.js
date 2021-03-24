@@ -2,6 +2,7 @@ const Hapi = require('@hapi/hapi')
 require('./configs/env')
 const swagger = require('./configs/swagger')
 const routes = require('./routes/index')
+const inert = require('@hapi/inert')
 
 const server = async () =>  {
 
@@ -11,8 +12,8 @@ const server = async () =>  {
     })
 
    
-    
-    await hapiServer.register(swagger);
+    await hapiServer.register(inert)
+    await hapiServer.register(swagger)
     hapiServer.route(routes)
   
    

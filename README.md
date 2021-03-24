@@ -1,6 +1,6 @@
 ## ⚠️ ATENÇÃO ⚠️
 
-Uma parte deste trabalho foi produzido em grupo durante um treinamento oferecido pela Accenture. O repositório original da equipe completa se encontra **[neste repositório](https://github.com/paulotelles/gamabank-accenture)**. A proposta desse fork é desenvolver todo um frontend para a aplicação, de forma que ela se torne fullstack. Abaixo segue o descritivo da aplicação como um todo, idêntico ao README original.
+Uma grande parte deste trabalho (todo o desenvolvimento de seu backend) foi produzida em grupo durante um treinamento oferecido pela Accenture. O repositório original da equipe completa se encontra **[neste repositório](https://github.com/paulotelles/gamabank-accenture)**. A proposta desse fork é desenvolver todo um frontend para a aplicação, de forma que ela se torne fullstack. Abaixo segue o descritivo da aplicação como um todo, idêntico ao README original.
 
 <hr>
 
