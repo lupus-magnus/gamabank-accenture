@@ -2,6 +2,8 @@
 
 Uma grande parte deste trabalho (todo o desenvolvimento de seu backend) foi produzida em grupo durante um treinamento oferecido pela Accenture. O repositório original da equipe completa se encontra **[neste repositório](https://github.com/paulotelles/gamabank-accenture)**. A proposta desse fork é desenvolver todo um frontend para a aplicação, de forma que ela se torne fullstack. Abaixo segue o descritivo da aplicação como um todo, idêntico ao README original.
 
+<p> Design em desenvolvimento: https://www.figma.com/file/IlBMiXyYVQqZeFxYAAF8z0/Maestro?node-id=33%3A5 </p>
+
 <hr>
 
 <img width="1000px" src="https://user-images.githubusercontent.com/60127869/111917427-ba2cf700-8a5e-11eb-93bc-c31199ad069e.png">
