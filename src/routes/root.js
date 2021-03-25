@@ -1,9 +1,13 @@
 
 const root = {
     method:'GET',
-    path: '/',
-    handler: (req, h) => {
-        return h.file("./public/index/index.html")
+    path: '/{param*}',
+    handler: {
+        directory: {
+            path: './public/index',
+            //index: ['index.html']
+        }
+        //return h.file("./public/index/index.html")
     }
 }
 
