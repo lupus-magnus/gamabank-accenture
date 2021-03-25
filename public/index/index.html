@@ -6,21 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HelloBank</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Rosario&family=Rowdies:wght@300&display=swap" rel="stylesheet"> 
 </head>
-<body style=" text-align: center; margin: auto; font-family:Arial, Helvetica, sans-serif;  background: black; color: white; padding: 30px;">
-    <div  style="
-    position: absolute; 
-    left: 50%;
-    top: 50%; 
-    transform:translate(-50%,-50%);
-    display: flex; 
-    flex-direction: column;
-    ">
-        <img src="https://user-images.githubusercontent.com/60127869/111917427-ba2cf700-8a5e-11eb-93bc-c31199ad069e.png" alt="logo">
-        <h1> Eu sou o primeiro arquivo estático dessa aplicação backend! </h1>
-        <h3 class="bluetext">Testando importação do css nessa linha.</h3>
-        <img src="hellobanklogo2.png" alt="testando imagem"> <!--Essa linha não é executada, por alguma razão.-->
-        <!--Aprendemos então que para servir mais de um arquivo por rota, precisamos configurar o handler para entregar um objeto. Observe o root.js-->
+<body>
+    <div class="main">
+        <div class="left-container"> 
+            <img src="homepageimg.jpg" alt="Happy people interacting">
+        </div>
+        <div class="right-container">
+            <div class="branding">
+                <img style="max-width: 80%;" src="hellobanklogoBLUENAME.png" alt="written brand logo">
+                <header> Invista em si mesmo </header>
+            </div>
+            <img width="136px" src="hellobanklogo1.png" alt="brand logo art">
+            <button class="blue-btn">login</button>
+            <button class="green-btn">signup</button>
+        </div>
     </div>
 </body>
 </html>

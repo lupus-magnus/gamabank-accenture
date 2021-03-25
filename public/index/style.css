@@ -1,3 +1,72 @@
-.bluetext {
-  color: #013a63;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.main {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+}
+
+.left-container {
+  display: inline-block;
+  height: 100vh;
+  background: #2c7da0;
+}
+
+.left-container img {
+  height: 100vh;
+  object-fit: fill;
+  filter: opacity(76%);
+} /*Essa imagem tem que ter um filtro #2C7DA0, 24% opacidade */
+
+.right-container {
+  height: 100%;
+  background: #468faf;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  padding: 30px 0;
+}
+
+.right-container header {
+  font-family: "Rosario", sans-serif;
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: 2px;
+  font-size: 20px;
+}
+
+.branding {
+  text-align: center;
+}
+
+.right-container button {
+  font-family: "Rowdies", cursive;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  font-size: 32px;
+  color: rgba(255, 255, 255, 0.65);
+
+  border: none;
+  text-decoration: none;
+  width: 380px;
+  height: 75px;
+  border-radius: 20px;
+
+  cursor: pointer;
+}
+.blue-btn {
+  background: #2a6f97;
+}
+
+.green-btn {
+  background: #2a9752;
 }
