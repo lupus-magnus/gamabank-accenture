@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../public/styles/index.style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Rosario&family=Rowdies:wght@300&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Rosario&family=Rowdies:wght@300&display=swap" rel="stylesheet"> 
 </head>
 <body>
     <div class="main">
@@ -20,15 +20,16 @@
                 <img style="max-width: 80%;" src="../public/images/hellobanklogoBLUENAME.png" alt="written brand logo">
                 <header> Invista em você. </header>
             </div>
-            <img id="brandLogo" width="136px" src="../public/images/hellobanklogo1.png" alt="brand logo art">
-            <div class="loginForm hidden">
+            <img id="brandLogo" class="animateUp" width="136px" src="../public/images/hellobanklogo1.png" alt="brand logo art">
+            <div class="loginForm hidden animateUp">
                 <form>
                     <input id="loginEmail" placeholder="e-mail" type="text">
                     <input placeholder='senha' type="password">
                     <button type="submit">➡</button>
                 </form>
+                <p class="error animateUp">Houve um erro no login.</p>
             </div>
-            <div class="signupForm hidden">
+            <div class="signupForm hidden animateUp">
                 <form>
                     <input id="signupName" placeholder="Insira seu nome completo" type="text" name="clientName">
                     <input placeholder="Seu e-mail" type="text" name="clientEmail">
