@@ -94,12 +94,46 @@
   grid-template-rows: 1.5em 1.5em;
   text-align: center;
   align-items: center;
-
-  animation-name: slideIn;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-in-out;
 }
+
+.signupForm form {
+  display: grid;
+  grid-template-columns: 80% auto;
+  grid-template-rows: 1.5em 1.5em;
+  text-align: center;
+  align-items: center;
+}
+.signupForm form input {
+  grid-column: 1 / 2;
+  font-family: "Rosario", sans-serif;
+  letter-spacing: 1.5px;
+  color: white;
+  font-weight: 700;
+  height: 100%;
+  padding: 0 0.5rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-bottom: 2px solid white;
+}
+.signupForm form button {
+  grid-column: 2 / 3;
+  grid-row: 1 / 5;
+  align-self: stretch;
+
+  border: none;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+  background: #2a6f97;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.signupForm form button:hover {
+  box-shadow: 0px 0px 10px #fff;
+}
+
 .loginForm form button:hover {
   box-shadow: 0px 0px 10px #fff;
 }
@@ -138,28 +172,29 @@
 .hidden {
   display: none;
 }
-/*animações*/
-.animateOut {
-  animation-name: slideOut;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-in-out;
+
+.error {
+  text-align: center;
+  color: #dc3545;
+  font-family: "Rosario", sans-serif;
+  font-weight: 800;
+  margin: 1em;
 }
 
-@keyframes slideOut {
-  to {
-    transform: translateX(1000px);
-    width: 0;
-  }
-}
-
-@keyframes slideIn {
+/*Animação*/
+@keyframes animateUp {
   from {
     opacity: 0;
-    transform: translateY(20%);
+    transform: translateY(20px);
   }
   to {
+    transform: translateY(0);
     opacity: 1;
-    transform: translateY(-50%);
   }
+}
+.animateUp {
+  animation-name: animateUp;
+  animation-duration: 300ms;
+  /* animation-delay: 0.5s; */
+  animation-fill-mode: forwards;
 }
